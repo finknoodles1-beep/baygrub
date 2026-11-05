@@ -37,15 +37,20 @@ function renderPlayers() {
     return label;
   }));
 }
-function setReel(reel, name) {
-  reel.querySelector('.slot-name').textContent = name;
-  reel.querySelector('.slot-initial').textContent = name.charAt(0).toUpperCase();
+function setReel(reel, names) {
+  reel.querySelectorAll('.slot-cell').forEach((cell, index) => {
+    const name = names[index];
+    cell.querySelector('.slot-name').textContent = name;
+    cell.querySelector('.slot-initial').textContent = name.charAt(0).toUpperCase();
+    cell.dataset.name = name;
+    cell.classList.remove('winning-cell');
+  });
 }
 function renderReels() {
-  slots.replaceChildren(...Array.from({length: 5}, (_, index) => {
+  slots.replaceChildren(...Array.from({length: 5}, (_, column) => {
     const reel = document.createElement('div'); reel.className = 'slot-reel';
-    reel.innerHTML = '<span class="slot-initial" aria-hidden="true"></span><strong class="slot-name"></strong>';
-    setReel(reel, players[index]);
+    reel.innerHTML = Array.from({length: 3}, () => '<div class="slot-cell"><span class="slot-initial" aria-hidden="true"></span><strong class="slot-name"></strong></div>').join('');
+    setReel(reel, Array.from({length: 3}, (_, row) => players[(column + row) % players.length]));
     return reel;
   }));
 }
@@ -79,8 +84,9 @@ beastBack.addEventListener('click', () => changePage(false));
 lever.addEventListener('click', async () => {
   if (spinning || !selected.size) return;
   const eligible = players.filter(name => selected.has(name));
-  // Each reel is an independent draw from the selected players.
-  const outcomes = Array.from({ length: 5 }, () => eligible[chooseRandom(eligible.length)]);
+  // Every position is drawn independently from the selected players.
+  const drawColumn = () => Array.from({ length: 3 }, () => eligible[chooseRandom(eligible.length)]);
+  const outcomes = Array.from({ length: 5 }, drawColumn);
   const token = ++spinToken;
   spinning = true; lever.disabled = true; renderPlayers();
   result.textContent = '';
@@ -91,7 +97,7 @@ lever.addEventListener('click', async () => {
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
   const timer = setInterval(() => {
     if (token !== spinToken) { clearInterval(timer); return; }
-    for (const reel of reels) if (reel.classList.contains('rolling')) setReel(reel, eligible[chooseRandom(eligible.length)]);
+    for (const reel of reels) if (reel.classList.contains('rolling')) setReel(reel, drawColumn());
   }, reduced.matches ? 80 : 85);
   for (let i = 0; i < reels.length; i++) {
     await delay(reduced.matches ? 50 : i === 0 ? 3100 : 540);
@@ -103,7 +109,12 @@ lever.addEventListener('click', async () => {
   clearInterval(timer);
   if (token !== spinToken) return;
   spinning = false; lever.disabled = false; renderPlayers();
-  const winner = outcomes.every(name => name === outcomes[0]) ? outcomes[0] : null;
+  const matches = eligible.filter(name => outcomes.every(column => column.includes(name)));
+  const winner = matches.length ? matches[chooseRandom(matches.length)] : null;
+  if (winner) for (const reel of reels) {
+    const cell = [...reel.querySelectorAll('.slot-cell')].find(item => item.dataset.name === winner);
+    if (cell) cell.classList.add('winning-cell');
+  }
   result.textContent = winner ? `${winner.toUpperCase()} SPONSORS!!` : 'NO MATCH — PULL AGAIN';
   result.classList.remove('result-pop'); void result.offsetWidth; result.classList.add('result-pop');
   if (winner) makeRain();

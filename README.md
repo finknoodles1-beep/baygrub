@@ -5,7 +5,7 @@ Local restaurant picker with a two-step opening:
 1. Click the delivery box. Its lid opens and the restaurant reel emerges. No restaurant is chosen yet.
 2. Click Spin. The 13-second reel decelerates, settles under the center marker and reveals the selected restaurant, address, information link and directions.
 
-Once selected, the shared pick stays until someone posts a review with a photo, date, and tier or resets it. Posting returns to the picker; reviews can be viewed and edited in Tier list & history. The Beast button opens the payer picker. Its five reels are independent; five matching names choose the sponsor, and any other result can be spun again. The original artwork is unchanged; the logo stays at the top above an animated sunset, with moving rays, clouds, birds, stars and a swaying forest. There are no purchases.
+Once selected, the shared pick stays until someone posts a review with a photo, date, and tier or resets it. Posting returns to the picker; reviews can be viewed and edited in Tier list & history. The Beast button opens the payer picker. Its five reels show three independently drawn names each; a name appearing in all five columns chooses the sponsor, and any other result can be spun again. If more than one person matches, one of them is randomly selected. The original artwork is unchanged; the logo stays at the top above an animated sunset, with moving rays, clouds, birds, stars and a swaying forest. There are no purchases.
 
 ## Restaurant pool
 
