@@ -1,19 +1,31 @@
 # BayGrub.club
 
-An animated coming-soon page built from the supplied BayGrub artwork. Responsive layouts, gently swaying photo, floating stars, pointer parallax, fireflies, and an accessible pause control. Reduced-motion preferences are respected.
+A local restaurant case opener inspired by the rolling reveal of game cases. Click the animated delivery box, watch cuisine emojis roll under the center marker, and get a restaurant with its address, information link, and Google Maps link. There are no payments or purchases.
+
+The original artwork remains unchanged. The logo sits at the top, and the forest sways beneath the playable area. Desktop and mobile layouts, pause/resume, reduced-motion preferences, cuisine filters, a searchable lineup, and repeat openings are supported.
+
+## Restaurant pool
+
+86 curated locations across San Ramon, Danville and Dublin, within a seven-mile straight-line area centered on City Center Bishop Ranch, 6000 Bollinger Canyon Road, San Ramon. This is a curated list, not an exhaustive directory or a live open-now feed. Hours and dietary suitability must be checked with the restaurant.
+
+Each entry in restaurants.js includes an address, cuisine, emoji and source. Official restaurant pages, the City Center Bishop Ranch directory, and the Town of Danville dining directory were consulted on November 4, 2026. US Census address geocoding confirmed distances for 82 of 86 locations. Four addresses could not be resolved by the geocoder and were retained based on their streets in central Danville/San Ramon/west Dublin, well inside the area. Distance values are approximate, not driving distances. One Fallon Road location outside seven miles was excluded.
+
+Every restaurant in the active cuisine pool has an equal chance, including repeat selections. The winner is sampled first with rejection sampling from Web Crypto, inserted into the reel, and centered exactly on the marker. Cuisine colors are visual labels and do not change selection odds. Changing the cuisine filter changes the eligible pool.
+
+Main sources:
+- https://citycenterbishopranch.com/directory/dining/
+- https://www.danville.ca.gov/1066/Eat-in-Danville
+- Official location links in each restaurant record
+- https://geocoding.geo.census.gov/geocoder/
 
 ## Local preview
-
-Install Node.js, then run:
 
     npm install
     npm run dev
 
-Open http://127.0.0.1:5173. No framework or backend is required.
+Open http://127.0.0.1:5173. No backend or API key is needed.
 
 ## Cloudflare Workers Builds
-
-Connect this GitHub repository and use:
 
 - Project name: baygrub
 - Build command: npm run build
@@ -26,4 +38,4 @@ The build copies the website and artwork into dist/. wrangler.jsonc configures W
 
 ## Editing
 
-index.html holds the composition; styles.css controls responsive layouts and animation; app.js controls motion preferences and particles. public/baygrub.jpg is the original artwork, unchanged. SVG view boxes and clip paths reuse it without stretching the logo or character.
+index.html holds the layout; styles.css controls responsive layouts and animation; app.js controls the case opening and motion; restaurants.js holds the pool and cuisine key. public/baygrub.jpg is the original artwork, unchanged.
