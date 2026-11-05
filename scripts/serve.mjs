@@ -23,6 +23,7 @@ const db = { prepare: statement, async batch(statements) {
   catch (e) { sqlite.exec('ROLLBACK'); throw e; }
 } };
 const root = resolve(process.argv[2] || '.');
+const port = Number(process.env.BAYGRUB_PORT || 5174);
 const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif', '.avif': 'image/avif', '.ico': 'image/x-icon' };
 const server = createServer(async (req, res) => {
   try {
@@ -43,4 +44,4 @@ const server = createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': types[extname(file)] || 'application/octet-stream' }); res.end(data);
   } catch (e) { console.error(e); res.writeHead(500).end('Local server error'); }
 });
-server.listen(5174, '127.0.0.1', () => console.log('Local preview: http://127.0.0.1:5174 (local data only)'));
+server.listen(port, '127.0.0.1', () => console.log(`Local preview: http://127.0.0.1:${port} (local data only)`));

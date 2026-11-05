@@ -37,3 +37,12 @@ body.in-beast .case-game,body.in-beast #review-view,body.in-beast .site-nav,body
 .slot-reel.rolling .slot-cell{animation:column-roll .32s linear infinite;filter:blur(.7px)}
 @keyframes column-roll{0%{transform:translateY(-25%)}100%{transform:translateY(25%)}}
 @media(prefers-reduced-motion:reduce){.slot-reel.rolling .slot-cell{animation:none;filter:none}}
+
+/* Each player keeps a distinct color across the reels. */
+.slot-cell[data-player="krish"] .slot-initial{background:#bfeeff;color:#005577}
+.slot-cell[data-player="danny"] .slot-initial{background:#ffd1df;color:#8a1850}
+.slot-cell[data-player="jordan"] .slot-initial{background:#d7c9ff;color:#5228a0}
+.slot-cell[data-player="ameen"] .slot-initial{background:#bbefcb;color:#17652e}
+.slot-cell[data-player="vikram"] .slot-initial{background:#ffddb1;color:#864500}
+.slot-cell[data-player="anshul"] .slot-initial{background:#fff19b;color:#695500}
+.slot-cell.winning-cell .slot-initial{outline:3px solid #d58b00;outline-offset:1px}

@@ -43,6 +43,7 @@ function setReel(reel, names) {
     cell.querySelector('.slot-name').textContent = name;
     cell.querySelector('.slot-initial').textContent = name.charAt(0).toUpperCase();
     cell.dataset.name = name;
+    cell.dataset.player = name.toLowerCase();
     cell.classList.remove('winning-cell');
   });
 }
@@ -100,7 +101,7 @@ lever.addEventListener('click', async () => {
     for (const reel of reels) if (reel.classList.contains('rolling')) setReel(reel, drawColumn());
   }, reduced.matches ? 80 : 85);
   for (let i = 0; i < reels.length; i++) {
-    await delay(i === 0 ? 6500 : 850);
+    await delay(i === 0 ? 2400 : 300);
     if (token !== spinToken) { clearInterval(timer); return; }
     reels[i].classList.remove('rolling');
     setReel(reels[i], outcomes[i]);

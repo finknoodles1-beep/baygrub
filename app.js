@@ -190,10 +190,7 @@ async function openCase() {
   const landing = target - 12;
   // Continuous quartic deceleration: fast for several seconds, then individual
   // cards become readable, followed by a slow last few ticks and a short settle.
-  const frames = reduced ? [
-    { transform: 'translateX(0px)' },
-    { transform: `translateX(${target}px)` }
-  ] : Array.from({ length: 101 }, (_, i) => {
+  const frames = Array.from({ length: 101 }, (_, i) => {
     const t = i / 100;
     const position = landing * (1 - Math.pow(1 - t, 4));
     return { offset: t * .94, transform: `translateX(${position}px)`, filter: `blur(${(1.25 * Math.pow(1 - t, 3)).toFixed(3)}px)`, easing: i === 100 ? 'cubic-bezier(.16,1,.3,1)' : 'linear' };
@@ -233,9 +230,9 @@ async function openCase() {
     status.textContent = 'SELECTED';
     note.textContent = `${winner.name} — ${winner.cuisine}`;
     if (!reduced) playTick(true);
-    await new Promise(resolve => setTimeout(resolve, reduced ? 30 : 1000));
+    await new Promise(resolve => setTimeout(resolve, 1800));
     window.baygrubSpinning = false;
-    showSelected(reservation.current);
+    await showSelected(reservation.current);
   } catch {
     spinAnimation = null;
     cancelAnimationFrame(tickFrame);
