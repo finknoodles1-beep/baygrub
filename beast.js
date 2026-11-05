@@ -79,7 +79,8 @@ beastBack.addEventListener('click', () => changePage(false));
 lever.addEventListener('click', async () => {
   if (spinning || !selected.size) return;
   const eligible = players.filter(name => selected.has(name));
-  const winner = eligible[chooseRandom(eligible.length)];
+  // Each reel is an independent draw from the selected players.
+  const outcomes = Array.from({ length: 5 }, () => eligible[chooseRandom(eligible.length)]);
   const token = ++spinToken;
   spinning = true; lever.disabled = true; renderPlayers();
   result.textContent = '';
@@ -96,14 +97,15 @@ lever.addEventListener('click', async () => {
     await delay(reduced.matches ? 50 : i === 0 ? 3100 : 540);
     if (token !== spinToken) { clearInterval(timer); return; }
     reels[i].classList.remove('rolling');
-    setReel(reels[i], winner);
+    setReel(reels[i], outcomes[i]);
     reels[i].classList.add('landed');
   }
   clearInterval(timer);
   if (token !== spinToken) return;
   spinning = false; lever.disabled = false; renderPlayers();
-  result.textContent = `${winner.toUpperCase()} SPONSORS!!`;
+  const winner = outcomes.every(name => name === outcomes[0]) ? outcomes[0] : null;
+  result.textContent = winner ? `${winner.toUpperCase()} SPONSORS!!` : 'NO MATCH — PULL AGAIN';
   result.classList.remove('result-pop'); void result.offsetWidth; result.classList.add('result-pop');
-  makeRain();
+  if (winner) makeRain();
 });
 renderPlayers(); renderReels();
