@@ -307,6 +307,414 @@ export const restaurants = [
     "logo": "/logos/ukai-japanese-bistro.png",
     "logoTheme": "light",
     "logoSource": "https://ukaibistro.com/storeLogo/17116679741789754485_1322.png"
+  },
+  {
+    "name": "Aozora",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "address": "820 Sycamore Valley Rd, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.08
+  },
+  {
+    "name": "Cielito",
+    "cuisine": "Mexican",
+    "emoji": "🌮",
+    "address": "445 Railroad Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.47
+  },
+  {
+    "name": "Danville Harvest",
+    "cuisine": "American",
+    "emoji": "🍽️",
+    "address": "500 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.58
+  },
+  {
+    "name": "Diablo Taqueria",
+    "cuisine": "Mexican",
+    "emoji": "🌮",
+    "address": "110 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.97
+  },
+  {
+    "name": "Donhao",
+    "cuisine": "Chinese",
+    "emoji": "🥡",
+    "address": "416 Sycamore Valley Rd, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.04
+  },
+  {
+    "name": "El Nido",
+    "cuisine": "Mexican",
+    "emoji": "🌮",
+    "address": "107 Town and Country Dr, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.21
+  },
+  {
+    "name": "Hashiya Sushi",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "address": "37 Railroad Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.89
+  },
+  {
+    "name": "Hazy Barbecue",
+    "cuisine": "Barbecue",
+    "emoji": "🍗",
+    "address": "200 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.82
+  },
+  {
+    "name": "Incontro Ristorante",
+    "cuisine": "Italian",
+    "emoji": "🍕",
+    "address": "455 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.63
+  },
+  {
+    "name": "Kaia's Island Kitchen",
+    "cuisine": "Hawaiian",
+    "emoji": "🍱",
+    "address": "480 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.61
+  },
+  {
+    "name": "Leo's Chinese Restaurant",
+    "cuisine": "Chinese",
+    "emoji": "🥡",
+    "address": "105 Town and Country Dr, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.21
+  },
+  {
+    "name": "Maison Benoit",
+    "cuisine": "French",
+    "emoji": "🥐",
+    "address": "402 Railroad Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.5
+  },
+  {
+    "name": "MJ Sushi",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "address": "3468 Camino Tassajara, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 3.33
+  },
+  {
+    "name": "Nanking Bistro",
+    "cuisine": "Chinese",
+    "emoji": "🥡",
+    "address": "150 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.9
+  },
+  {
+    "name": "Norm's Place",
+    "cuisine": "American",
+    "emoji": "🍽️",
+    "address": "356 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.73
+  },
+  {
+    "name": "Pete's Brass Rail",
+    "cuisine": "American",
+    "emoji": "🍽️",
+    "address": "201 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.82
+  },
+  {
+    "name": "Primo's Pizzeria & Pub",
+    "cuisine": "Pizza",
+    "emoji": "🍕",
+    "address": "298 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.78
+  },
+  {
+    "name": "Revel Kitchen & Bar",
+    "cuisine": "American",
+    "emoji": "🍽️",
+    "address": "331 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.74
+  },
+  {
+    "name": "Romana Pizzeria",
+    "cuisine": "Pizza",
+    "emoji": "🍕",
+    "address": "251 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.8
+  },
+  {
+    "name": "Similan Thai Cuisine",
+    "cuisine": "Thai",
+    "emoji": "🍤",
+    "address": "9000 Crow Canyon Rd, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 3.0
+  },
+  {
+    "name": "Slow G's Eatery",
+    "cuisine": "American",
+    "emoji": "🍽️",
+    "address": "440 Diablo Rd, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.6
+  },
+  {
+    "name": "Sushi Tamahime",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "address": "301 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.77
+  },
+  {
+    "name": "Sushi Yokohama",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "address": "558 San Ramon Valley Blvd, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.33
+  },
+  {
+    "name": "Taru Japanese Cuisine",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "address": "120 E Prospect Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.7
+  },
+  {
+    "name": "Taverna Sorrentina",
+    "cuisine": "Italian",
+    "emoji": "🍕",
+    "address": "100 Railroad Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.81
+  },
+  {
+    "name": "The Great Impasta",
+    "cuisine": "Italian",
+    "emoji": "🍕",
+    "address": "318 Sycamore Valley Rd, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.02
+  },
+  {
+    "name": "The Growler",
+    "cuisine": "American",
+    "emoji": "🍽️",
+    "address": "515 San Ramon Valley Blvd, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.34
+  },
+  {
+    "name": "The Peasant & The Pear",
+    "cuisine": "American",
+    "emoji": "🍽️",
+    "address": "111 W Prospect Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.68
+  },
+  {
+    "name": "Vally Medlyn's",
+    "cuisine": "Breakfast",
+    "emoji": "🥞",
+    "address": "330 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.75
+  },
+  {
+    "name": "Yo's On Hartz",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "address": "531 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.56
+  },
+  {
+    "name": "Zaya Thai Pantry",
+    "cuisine": "Thai",
+    "emoji": "🍤",
+    "address": "301 Hartz Ave, Danville, CA",
+    "source": "https://www.danville.ca.gov/1066/Eat-in-Danville",
+    "distanceMiles": 4.77
+  },
+  {
+    "name": "Katy's Korner",
+    "cuisine": "Breakfast",
+    "emoji": "🥞",
+    "address": "2550 San Ramon Valley Blvd, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.01
+  },
+  {
+    "name": "One House Bistro",
+    "cuisine": "Thai and brunch",
+    "emoji": "🍤",
+    "address": "2468 San Ramon Valley Blvd, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.22
+  },
+  {
+    "name": "Kinja Sushi",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "address": "3110 Crow Canyon Pl, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.28
+  },
+  {
+    "name": "Enker Foods",
+    "cuisine": "Indian",
+    "emoji": "🍛",
+    "address": "12171 Alcosta Blvd, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.25
+  },
+  {
+    "name": "Hula Wok BBQ",
+    "cuisine": "Hawaiian",
+    "emoji": "🍱",
+    "address": "2441 San Ramon Valley Blvd, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.31
+  },
+  {
+    "name": "House of Basil",
+    "cuisine": "Thai",
+    "emoji": "🍤",
+    "address": "154 Sunset Dr, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 0.08
+  },
+  {
+    "name": "Primavera Ristorante",
+    "cuisine": "Italian",
+    "emoji": "🍕",
+    "address": "3124 Crow Canyon Pl, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.27
+  },
+  {
+    "name": "Kawana Ramen and Hawaiian BBQ",
+    "cuisine": "Japanese ramen",
+    "emoji": "🍜",
+    "address": "9150 Alcosta Blvd, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 2.7
+  },
+  {
+    "name": "Uma's Kitchen",
+    "cuisine": "Indian",
+    "emoji": "🍛",
+    "address": "12919 Alcosta Blvd, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.31
+  },
+  {
+    "name": "Bishop Grill",
+    "cuisine": "California American",
+    "emoji": "🍽️",
+    "address": "2600 Bishop Dr, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 0.63
+  },
+  {
+    "name": "Dumpling 85",
+    "cuisine": "Chinese dumplings",
+    "emoji": "🥟",
+    "address": "2005 Crow Canyon Pl, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.52
+  },
+  {
+    "name": "K-BOB",
+    "cuisine": "Korean",
+    "emoji": "🍚",
+    "address": "1061 Market Pl, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 0.42
+  },
+  {
+    "name": "Sakura Japanese Cuisine",
+    "cuisine": "Japanese",
+    "emoji": "🍣",
+    "address": "2277 San Ramon Valley Blvd, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.51
+  },
+  {
+    "name": "Diamond Bites",
+    "cuisine": "Persian",
+    "emoji": "🍢",
+    "address": "2010 Crow Canyon Pl, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.51
+  },
+  {
+    "name": "The Clove Indian Cuisine",
+    "cuisine": "Indian vegetarian",
+    "emoji": "🍛",
+    "address": "200 Market Pl, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 0.5
+  },
+  {
+    "name": "Reyasat Exquisite Indian Cuisine",
+    "cuisine": "Indian",
+    "emoji": "🍛",
+    "address": "2005 Crow Canyon Pl, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.52
+  },
+  {
+    "name": "Nagoya Sushi House",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "address": "2551 San Ramon Valley Blvd, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.09
+  },
+  {
+    "name": "Orient Express",
+    "cuisine": "Chinese",
+    "emoji": "🥡",
+    "address": "2475 San Ramon Valley Blvd, San Ramon, CA",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.25
+  },
+  {
+    "name": "Biryani Bistro",
+    "cuisine": "Indian",
+    "emoji": "🍛",
+    "address": "8937 San Ramon Road, Dublin, CA 94568",
+    "source": "https://biryanibistrous.com/",
+    "distanceMiles": 2.9
+  },
+  {
+    "name": "Biryaniz",
+    "cuisine": "Indian",
+    "emoji": "🍛",
+    "address": "6830 Village Parkway, Dublin, CA 94568",
+    "source": "https://www.biryaniz.com/",
+    "distanceMiles": 4.24
   }
 ].sort((a,b) => a.name.localeCompare(b.name));
 

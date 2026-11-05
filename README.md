@@ -9,9 +9,9 @@ Close box hides the reel. Spin again repeats the roll. The original artwork is u
 
 ## Restaurant pool
 
-29 local restaurants remain after excluding national/regional chains, multi-location brands, conventional fast-food outlets and ambiguous group/franchise cases. This stricter selection replaces the previous 86-place pool. Official restaurant websites were checked on November 4, 2026; each entry in restaurants.js links its official site.
+80 local restaurants: the previous 29 vetted places plus 51 additional listings from local directories and restaurant websites. National and regional chains are excluded where identified. The new directory listings have not each been independently audited for ownership or current operating status; verify before visiting. Sources are linked in each restaurant record.
 
-The area is a seven-mile straight-line radius centered on City Center Bishop Ranch, 6000 Bollinger Canyon Road, San Ramon. All retained records have US Census address-geocoder distance estimates within seven miles. This is not an exhaustive directory or a live open-now feed. Check the restaurant for hours and menus.
+The area is a seven-mile straight-line radius centered on City Center Bishop Ranch, 6000 Bollinger Canyon Road, San Ramon. All records have US Census address-geocoder distance estimates within seven miles. This is not an exhaustive directory or a live open-now feed. Check the restaurant for hours and menus.
 
 Every eligible restaurant has equal odds, including repeat selections. The winner is sampled with Web Crypto rejection sampling, inserted in the reel and centered on the marker. Cuisine colors do not change odds. Cuisine filtering changes the eligible pool.
 
