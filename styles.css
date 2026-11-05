@@ -113,3 +113,22 @@ footer{justify-content:flex-end}
   .restaurant-name{font-size:10px}
   .spin-button{margin-top:14px}
 }
+
+/* Woodland reel: paper tickets in a dark, softly worn frame. */
+.opener-panel{isolation:isolate}
+.botanical{position:absolute;z-index:-1;top:36px;width:125px;height:220px;color:#71805b;opacity:.68;pointer-events:none;transform-origin:bottom center;animation:branch-wind 8s ease-in-out infinite}
+.botanical svg{display:block;width:100%;height:100%}.botanical-left{left:-105px}.botanical-right{right:-105px;scale:-1 1;animation-delay:-3.5s}
+.case-toolbar{margin-bottom:12px}.craving-label select{border-color:#8e9b7e;background-color:#f7f1df;color:#304737;border-radius:4px;font-weight:700}.pool-button{color:#3d5b46}.pool-button span{background:#d6dfc9;color:#304737}
+.reel-frame{border:1px solid #253d31;border-radius:8px;background:#344d3b;box-shadow:0 5px 0 #203728,0 14px 28px #2d281a26}
+.reel-header,.reel-bottom{background:#344d3b;color:#e2e5cf;border-color:#6d8066;padding:13px 18px;letter-spacing:2px}.reel-status{color:#d5dfb8}.reel-bottom button{color:#d5dfc6}.reel-bottom button[aria-pressed=true]{color:#fff2c8}
+.reel-window{background:#c7c6a6;box-shadow:inset 0 3px 12px #21372c55}
+.reel-window::after{box-shadow:inset 42px 0 34px -25px #1e382f88,inset -42px 0 34px -25px #1e382f88}
+.reel-track{gap:7px}.food-card{border:1px solid #c9c9a8;border-bottom:3px solid var(--cuisine-color,#799572);border-radius:3px;background:linear-gradient(135deg,#f5f0df,#e9e6cf);box-shadow:0 2px 5px #263b2b1c;color:#263c2b}
+.food-card::before{background:none;border:1px solid #bdcbb0;filter:none;opacity:.55;top:13px;width:62px;height:62px}.restaurant-icon{background:#fcf9eb;border-color:#e2dfc7;box-shadow:0 2px 6px #27382516}.restaurant-name{color:#293d2e}.food-type{color:#65715b;letter-spacing:.55px}
+.reel-marker{width:2px;background:#e1ad4c;box-shadow:0 0 8px #e4b25c88}.reel-marker::before{border-top-color:#e1ad4c}.reel-marker::after{border-bottom-color:#e1ad4c}
+.food-card.is-winner{background:linear-gradient(135deg,#fff8dc,#e7edca);box-shadow:inset 0 0 0 2px #b9984d,0 0 24px #f1c97655}
+.is-rolling .reel-frame{box-shadow:0 5px 0 #203728,0 18px 35px #2b392d40}
+.spin-button{min-width:180px;border-color:#253e2d;border-radius:4px;background:#385944;color:#fff9e8;box-shadow:0 4px 0 #233f2d;font-size:14px;letter-spacing:.5px}.spin-button:hover{background:#496e52}.spin-button:disabled{background:#778b73;border-color:#71846d;box-shadow:0 4px 0 #536b55}
+.case-game .selection-note,.case-game .radius-note{background:transparent;color:#6d775e}.result-dialog{border-radius:10px;border-color:#84977a;background:#f6f2e5}.result-dialog .dialog-kicker,.winner-cuisine{color:#557355}.result-actions .primary-link{background:#385944;border-radius:4px}.again-button{color:#556c52;border-color:#aab89b}
+@keyframes branch-wind{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@media(max-width:700px){.botanical{top:85px;width:58px;height:120px;opacity:.4}.botanical-left{left:-23px}.botanical-right{right:-23px}.reel-header,.reel-bottom{padding-left:12px;padding-right:12px}.spin-button{min-width:160px}}
