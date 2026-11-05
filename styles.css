@@ -17,3 +17,12 @@ body.paused *,body.paused *::before{animation-play-state:paused!important}.pause
 .blue{clip-path:polygon(20% 1%,52% 19%,85% 6%,78% 44%,100% 70%,64% 72%,47% 100%,35% 71%,0 62%,25% 39%)}
 .black{clip-path:polygon(42% 0,64% 28%,100% 26%,78% 59%,92% 89%,58% 80%,28% 100%,27% 65%,0 47%,34% 36%)}
 .orange{clip-path:polygon(25% 0,55% 20%,84% 5%,77% 43%,100% 68%,65% 70%,48% 100%,34% 72%,0 63%,27% 40%)}
+
+/* Wind bends the canopy from a fixed base. Overscan keeps both edges filled. */
+.artwork .forest{left:-2%;width:104%;transform-origin:50% 100%;animation:forest-wind 10s ease-in-out infinite;will-change:transform}
+@keyframes forest-wind{
+  0%,100%{transform:skewX(-.9deg)}
+  30%{transform:skewX(1.2deg)}
+  55%{transform:skewX(-.3deg)}
+  75%{transform:skewX(.6deg)}
+}
