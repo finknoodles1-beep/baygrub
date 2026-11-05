@@ -174,3 +174,23 @@ footer{justify-content:flex-end}
   .reel-header,.reel-bottom{padding:9px 11px;font-size:9px}.reel-window{height:188px}.food-card{flex-basis:138px;height:160px}.restaurant-icon{width:70px;height:70px}.restaurant-name{font-size:10px}.food-type{font-size:8px}
   .spin-button{margin-top:19px;min-width:180px}.case-game .radius-note{font-size:9px}
 }
+
+/* Sunset atmosphere behind the existing artwork and controls. */
+.scene{background:#f2b28b}
+.sunset-sky{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#895a80 0%,#cf8184 20%,#f3ae82 42%,#ffd49e 66%,#ffdbab 79%,#da805c 100%)}
+.sunset-sky::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 82% 27%,#ffe6a9a8 0%,#ffcc8870 20%,transparent 55%),linear-gradient(0deg,#e35f6155,transparent 42%);animation:sky-breathe 12s ease-in-out infinite alternate}
+.sun-halo{position:absolute;left:82%;top:27%;width:1px;height:1px}
+.sun-disc{position:absolute;width:clamp(125px,17vw,225px);aspect-ratio:1;left:0;top:0;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle at 42% 35%,#fffbe0 0%,#ffe393 48%,#ffb858 85%);box-shadow:0 0 40px 16px #ffc97199,0 0 110px 50px #ffb27066;animation:sun-glow 7s ease-in-out infinite alternate}
+.sun-rays{position:absolute;left:0;top:0;width:110vmax;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:repeating-conic-gradient(from -7deg,#ffefb74a 0deg 5deg,transparent 6deg 20deg);mask-image:radial-gradient(circle,#0000 0 7%,#000 18%,transparent 66%);animation:turn-rays 55s linear infinite}
+.sunset-cloud{position:absolute;width:clamp(170px,24vw,350px);color:#ffdfbb;opacity:.4;filter:blur(.5px);animation:cloud-drift 32s ease-in-out infinite alternate}
+.sunset-cloud svg{display:block;width:100%;height:auto;fill:currentColor}.cloud-one{left:-3%;top:19%}.cloud-two{left:47%;top:35%;width:clamp(180px,28vw,420px);opacity:.27;color:#ffe0bb;animation-duration:43s;animation-delay:-11s}.cloud-three{left:66%;top:8%;width:clamp(150px,20vw,300px);opacity:.3;color:#ffd4cb;animation-duration:38s;animation-delay:-22s}
+.sky-stars{position:absolute;left:12%;top:10%;width:3px;height:3px;border-radius:50%;background:#fff2c9;box-shadow:7vw 6vh #ffefbf,16vw -2vh #fff0dd,26vw 11vh #ffe9c1,42vw 2vh #fff1ce,55vw 8vh #fff1d2,66vw -1vh #ffefc3,77vw 13vh #fff4d9,35vw 19vh #fff2ce,4vw 28vh #fff1d1,72vw 31vh #fff2d4;animation:stars-shimmer 4s ease-in-out infinite alternate}
+.bird-flight{position:absolute;left:-15%;top:29%;width:95px;height:auto;color:#65424b;opacity:.62;animation:birds-cross 38s linear infinite}
+.wordmark svg{overflow:visible}
+@keyframes sky-breathe{from{opacity:.65}to{opacity:1}}
+@keyframes sun-glow{from{filter:brightness(.95);scale:.98}to{filter:brightness(1.08);scale:1.04}}
+@keyframes turn-rays{to{rotate:360deg}}
+@keyframes cloud-drift{from{transform:translateX(-25px)}to{transform:translateX(45px)}}
+@keyframes stars-shimmer{from{opacity:.35}to{opacity:1}}
+@keyframes birds-cross{from{transform:translateX(0)}to{transform:translateX(130vw)}}
+@media(max-width:700px){.sun-halo{left:80%;top:22%}.sun-disc{width:150px}.sun-rays{width:180vmax}.cloud-one{top:24%;left:-20%}.cloud-two{top:48%;left:27%}.cloud-three{top:8%;left:56%}.bird-flight{top:37%;width:65px}.sky-stars{left:5%}.photo-drift{top:79%}}

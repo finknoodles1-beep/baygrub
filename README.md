@@ -5,7 +5,7 @@ Local restaurant picker with a two-step opening:
 1. Click the delivery box. Its lid opens and the restaurant reel emerges. No restaurant is chosen yet.
 2. Click Spin. The 13-second reel decelerates, settles under the center marker and reveals the selected restaurant, address, information link and directions.
 
-Close box hides the reel. Spin again repeats the roll. The original artwork is unchanged; the logo stays at the top and the forest sways below the picker. There are no purchases.
+Close box hides the reel. Spin again repeats the roll. The original artwork is unchanged; the logo stays at the top above an animated sunset, with moving rays, clouds, birds, stars and a swaying forest. There are no purchases.
 
 ## Restaurant pool
 
@@ -19,7 +19,7 @@ Every eligible restaurant has equal odds, including repeat selections. The winne
 
 16 usable logos were downloaded from the restaurants' official website headers into public/logos/. Their original asset URLs are recorded as logoSource in restaurants.js. Brand images remain unchanged. An unusable blank logo was rejected.
 
-Each card includes the restaurant's name and cuisine. Missing or failed logos fall back to a name-initial emblem with a cuisine badge; these emblems are not official logos. The same identity treatment appears in the list and result dialog. No external logo service or visitor tracking request is used.
+Each card includes the restaurant's name and cuisine. Missing or failed logos fall back to a name-initial emblem; these emblems are not official logos. The same identity treatment appears in the list and result dialog. No external logo service or visitor tracking request is used.
 
 ## Motion and sound
 

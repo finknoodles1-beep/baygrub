@@ -14,10 +14,18 @@
 <body>
   <main class="scene" aria-labelledby="site-title">
     <h1 class="sr-only" id="site-title">BayGrub.club</h1>
+    <div class="sunset-sky" aria-hidden="true">
+      <div class="sun-halo"><div class="sun-rays"></div><div class="sun-disc"></div></div>
+      <div class="sunset-cloud cloud-one"><svg viewBox="0 0 340 90"><path d="M8 69c25-10 45-10 68-6 7-24 26-35 50-26 18-28 52-26 67-3 33-8 57 7 60 25 31-4 59 4 78 13-87 15-239 14-323-3Z"/></svg></div>
+      <div class="sunset-cloud cloud-two"><svg viewBox="0 0 340 90"><path d="M8 69c25-10 45-10 68-6 7-24 26-35 50-26 18-28 52-26 67-3 33-8 57 7 60 25 31-4 59 4 78 13-87 15-239 14-323-3Z"/></svg></div>
+      <div class="sunset-cloud cloud-three"><svg viewBox="0 0 340 90"><path d="M8 69c25-10 45-10 68-6 7-24 26-35 50-26 18-28 52-26 67-3 33-8 57 7 60 25 31-4 59 4 78 13-87 15-239 14-323-3Z"/></svg></div>
+      <div class="sky-stars"></div>
+      <svg class="bird-flight" viewBox="0 0 160 52"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="3"><path d="M4 18q10-13 20 0 10-13 20 0"/><path d="M56 33q7-9 14 0 7-9 14 0"/><path d="M103 12q8-10 16 0 8-10 16 0"/></g></svg>
+    </div>
     <div class="artwork" aria-hidden="true">
-      <svg class="forest" viewBox="0 1510 5500 1868" preserveAspectRatio="xMidYMin slice"><defs><clipPath id="crop1"><path d="M0 1510H4800V1640H5500V3378H0Z"/></clipPath></defs><g clip-path="url(#crop1)"><image href="/baygrub.jpg" width="5692" height="3378"/></g></svg>
+      <svg class="forest" viewBox="0 1510 5500 1868" preserveAspectRatio="xMidYMin slice"><defs><clipPath id="crop1"><path d="M0 1510H4800V1640H5500V3378H0Z"/></clipPath><filter id="remove-forest-sky" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 -2 0 0 1.9"/></filter></defs><g clip-path="url(#crop1)"><image href="/baygrub.jpg" width="5692" height="3378" filter="url(#remove-forest-sky)"/></g></svg>
       <div class="drift photo-drift"><svg class="photo" viewBox="480 0 940 1550" preserveAspectRatio="xMidYMin meet"><defs><clipPath id="photo-clip"><path d="M1035 0H1065V385L1100 400 1090 470 1365 540 1200 1525 480 1410 690 430 1000 485 1000 400 1035 385Z"/></clipPath></defs><image href="/baygrub.jpg" width="5692" height="3378" clip-path="url(#photo-clip)"/></svg></div>
-      <div class="wordmark"><svg viewBox="1470 585 2820 465"><defs><clipPath id="crop2"><rect x="1470" y="585" width="2820" height="465"/></clipPath></defs><g clip-path="url(#crop2)"><image href="/baygrub.jpg" width="5692" height="3378"/></g></svg></div>
+      <div class="wordmark"><svg viewBox="1470 585 2820 465"><defs><clipPath id="crop2"><rect x="1470" y="585" width="2820" height="465"/></clipPath><filter id="remove-paper" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -6.3 0 6.3 0 1"/></filter></defs><g clip-path="url(#crop2)"><image href="/baygrub.jpg" width="5692" height="3378" filter="url(#remove-paper)"/></g></svg></div>
       <svg class="tagline" viewBox="1860 1165 1750 150"><defs><clipPath id="crop3"><rect x="1860" y="1165" width="1750" height="150"/></clipPath></defs><g clip-path="url(#crop3)"><image href="/baygrub.jpg" width="5692" height="3378"/></g></svg>
       <div class="drift blue-drift"><svg class="star blue" viewBox="4050 55 390 370"><defs><clipPath id="crop4"><rect x="4050" y="55" width="390" height="370"/></clipPath></defs><g clip-path="url(#crop4)"><image href="/baygrub.jpg" width="5692" height="3378"/></g></svg></div>
       <div class="drift black-drift"><svg class="star black" viewBox="4340 420 650 650"><defs><clipPath id="crop5"><rect x="4340" y="420" width="650" height="650"/></clipPath></defs><g clip-path="url(#crop5)"><image href="/baygrub.jpg" width="5692" height="3378"/></g></svg></div>

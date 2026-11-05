@@ -70,9 +70,6 @@ function restaurantIdentity(restaurant) {
     image.addEventListener('error', () => image.remove(), { once: true });
     icon.append(image);
   }
-  const cuisine = document.createElement('span');
-  cuisine.className = 'cuisine-badge'; cuisine.textContent = restaurant.emoji;
-  icon.append(cuisine);
   return icon;
 }
 
@@ -224,7 +221,7 @@ async function openCase() {
     track.style.filter = '';
     track.children[index].classList.add('is-winner');
     status.textContent = 'SELECTED';
-    note.textContent = `${winner.emoji} ${winner.name} — ${winner.cuisine}`;
+    note.textContent = `${winner.name} — ${winner.cuisine}`;
     if (!reduced) playTick(true);
     await new Promise(resolve => setTimeout(resolve, reduced ? 30 : 1000));
     showWinner(winner);
