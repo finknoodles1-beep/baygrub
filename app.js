@@ -185,7 +185,7 @@ async function openCase() {
   track.style.transform = 'translateX(0px)';
   const target = centerOffset(index);
   const reduced = instantResult;
-  const duration = reduced ? 150 : 13000;
+  const duration = 13000;
   track.dataset.duration = String(duration);
   const landing = target - 12;
   // Continuous quartic deceleration: fast for several seconds, then individual
@@ -355,5 +355,12 @@ for (let i = 0; i < 22; i++) {
   fireflies.append(dot);
 }
 
+addEventListener('baygrub:reset', () => {
+  if (spinAnimation) spinAnimation.cancel();
+  openerPanel.hidden = true; game.classList.remove('has-opener'); openButton.classList.remove('opening');
+  openButton.setAttribute('aria-expanded', 'false'); openButton.setAttribute('aria-label', 'Open delivery box');
+  openLabel.textContent = 'Open box';
+  if (!spinning) idleReel();
+});
 let returningFromReview = false;
 initShared({ onShowPicker: () => { game.hidden = false; if (returningFromReview) { openerPanel.hidden = true; game.classList.remove('has-opener'); openButton.classList.remove('opening'); openButton.setAttribute('aria-expanded', 'false'); openButton.setAttribute('aria-label', 'Open delivery box'); openLabel.textContent = 'Open box'; idleReel(); returningFromReview = false; } }, onShowReview: () => { game.hidden = true; returningFromReview = true; } });

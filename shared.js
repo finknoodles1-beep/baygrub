@@ -64,7 +64,7 @@ export async function reserveRestaurant(restaurant) {
   return api('/api/current', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name:restaurant.name}) });
 }
 export async function showSelected(pick) {
-  stateEpoch++; state.current = pick; initialized = true; renderCurrent(); await sync();
+  stateEpoch++; state.current = pick; initialized = true; await sync({ render: false }); renderCurrent();
 }
 async function compressPhoto(file) {
   if (!file) return null;
@@ -135,6 +135,15 @@ export function initShared(options = {}) {
   $('#reset-pick').addEventListener('click', async () => {
     if (!state.current || !confirm('Reset the current pick and return to the start? The review history will stay.')) return;
     try { await api('/api/current',{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:state.current.id})}); await sync(); } catch(e) { alert(e.message); await sync(); }
+  });
+  $('#master-reset').addEventListener('click', async () => {
+    if (!confirm('Reset the current pick and return to the start? Your review history will be kept.')) return;
+    try {
+      await sync({render:false});
+      if (state.current) await api('/api/current',{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:state.current.id})});
+      window.dispatchEvent(new Event('baygrub:reset'));
+      await sync();
+    } catch(e) { alert(e.message); await sync(); }
   });
   $('#history-open').addEventListener('click', async () => { await sync({render:false}); renderHistory(); $('#history-dialog').showModal(); });
   document.querySelectorAll('[data-close]').forEach(button=>button.addEventListener('click',()=>document.getElementById(button.dataset.close).close()));

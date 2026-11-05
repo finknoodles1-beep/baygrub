@@ -100,7 +100,7 @@ lever.addEventListener('click', async () => {
     for (const reel of reels) if (reel.classList.contains('rolling')) setReel(reel, drawColumn());
   }, reduced.matches ? 80 : 85);
   for (let i = 0; i < reels.length; i++) {
-    await delay(reduced.matches ? 50 : i === 0 ? 3100 : 540);
+    await delay(i === 0 ? 6500 : 850);
     if (token !== spinToken) { clearInterval(timer); return; }
     reels[i].classList.remove('rolling');
     setReel(reels[i], outcomes[i]);

@@ -32,3 +32,8 @@ body.in-beast .case-game,body.in-beast #review-view,body.in-beast .site-nav,body
 .slot-cell{width:100%;min-width:0;min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:4px;border-bottom:1px solid #d7dce4}
 .slot-cell:last-child{border-bottom:0}.slot-cell.winning-cell{background:#ffe88e;box-shadow:inset 0 0 0 3px #e3a725}.slot-reel.landed .slot-initial{background:#d6f6ff;color:#0875a8}.slot-cell.winning-cell .slot-initial{background:#ffc532;color:#71345a}
 @media(max-width:600px){.slot-reel{height:auto}.slot-cell{min-height:60px;gap:2px}.slot-cell .slot-initial{width:28px;height:28px;font-size:16px}.slot-cell .slot-name{font-size:8px}}
+
+.slot-reel{overflow:hidden}
+.slot-reel.rolling .slot-cell{animation:column-roll .32s linear infinite;filter:blur(.7px)}
+@keyframes column-roll{0%{transform:translateY(-25%)}100%{transform:translateY(25%)}}
+@media(prefers-reduced-motion:reduce){.slot-reel.rolling .slot-cell{animation:none;filter:none}}
