@@ -58,3 +58,18 @@ dialog{border:1px solid #d5b68c;border-radius:20px;padding:38px;background:#fff5
   .box-illustration{height:94px}
 }
 .pool-button:disabled{cursor:wait;opacity:.5}
+
+.case-game h2{margin:20px 0 30px}
+.open-case{min-width:240px;padding-right:32px}
+.open-subtitle:empty{display:none}
+.reel-bottom button{border:0;padding:4px 0;background:none;color:#705740;font:600 10px Arial;cursor:pointer;letter-spacing:.3px}
+.reel-bottom button[aria-pressed=true]{color:#0575b5}
+.reel-bottom button:disabled{opacity:.4;cursor:wait}
+.reel-marker{transform-origin:50% 0}
+.is-rolling .reel-frame{box-shadow:0 8px 0 #ceb08a55,0 20px 55px #7c490b2b}
+.is-rolling .food-card{border-bottom-width:5px}
+.food-card.is-winner{box-shadow:inset 0 0 0 2px #e4a62c,0 0 24px #f5ae3c55;animation:card-lock .5s ease-out both}
+.result-actions{margin-top:28px}
+footer{justify-content:flex-end}
+@keyframes card-lock{0%{scale:.96;filter:brightness(1.35)}100%{scale:1;filter:brightness(1)}}
+@media(max-width:700px){.case-game h2{margin:18px 0 27px}.open-case{padding-right:25px}}

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffebd2">
-  <meta name="description" content="Crack a food case and discover your next restaurant within seven miles of San Ramon's City Center Bishop Ranch.">
-  <title>BayGrub.club — Unbox your next bite</title>
+  <meta name="description" content="Random restaurant picker for San Ramon, Danville, and Dublin.">
+  <title>BayGrub.club</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%230575b5' stroke='white' stroke-width='4' d='M50 4 62 33 95 28 75 55 87 87 54 76 28 97 27 64 3 44 35 35Z'/%3E%3C/svg%3E">
   <link rel="preload" as="image" href="/baygrub.jpg">
   <link rel="stylesheet" href="/styles.css">
@@ -25,42 +25,40 @@
       <div class="fireflies"></div>
     </div>
     <section class="case-game" aria-labelledby="game-title">
-      <div class="location"><span aria-hidden="true">↗</span> SAN RAMON, CA <span class="location-divider">/</span> 7-MILE FOOD DROP</div>
-      <h2 id="game-title">Unbox your next bite<span>.</span></h2>
-      <p class="game-intro">No more “where should we eat?” Let the box decide.</p>
+      <div class="location">SAN RAMON, CA <span class="location-divider">/</span> 7-MILE RADIUS</div>
+      <h2 id="game-title">Restaurant case</h2>
       <div class="case-toolbar">
-        <label class="craving-label"><span class="sr-only">Filter by cuisine</span><select id="cuisine-filter"><option value="all">🍽️ Every cuisine</option></select></label>
-        <button class="pool-button" id="view-restaurants" type="button">See the restaurants <span id="pool-count"></span> ↗</button>
+        <label class="craving-label"><span class="sr-only">Filter by cuisine</span><select id="cuisine-filter"><option value="all">All cuisines</option></select></label>
+        <button class="pool-button" id="view-restaurants" type="button">Restaurants <span id="pool-count"></span></button>
       </div>
       <div class="reel-frame">
-        <div class="reel-header"><span>THE LOCAL FLAVOR CASE</span><span class="reel-status">READY TO ROLL</span></div>
+        <div class="reel-header"><span>RESTAURANTS</span><span class="reel-status">READY</span></div>
         <div class="reel-window" id="reel-window" aria-label="Restaurant roulette"><div class="reel-track" id="reel-track" aria-hidden="true"></div><div class="reel-marker" aria-hidden="true"></div></div>
-        <div class="reel-bottom"><span>ONE BOX. YOUR NEXT SPOT.</span><span>↓ THE PICK IS HERE</span></div>
+        <div class="reel-bottom"><button id="sound-toggle" type="button" aria-pressed="false">Sound: off</button><button id="instant-toggle" type="button" aria-pressed="true">Animation: on</button></div>
       </div>
       <button class="open-case" id="open-case" type="button" aria-label="Open food case and choose a restaurant">
         <span class="box-illustration" aria-hidden="true">
           <svg viewBox="0 0 160 140"><ellipse cx="80" cy="125" rx="57" ry="8" fill="#231b1420"/><g class="box-treats"><text x="38" y="54" font-size="27">🍔</text><text x="88" y="48" font-size="26">🍣</text><text x="67" y="70" font-size="24">🌮</text></g><path d="M22 58 80 37 139 58 80 80Z" fill="#ffe3aa" stroke="#6c3d21" stroke-width="2"/><path d="M22 58 80 80V125L22 102Z" fill="#d69a54" stroke="#6c3d21" stroke-width="2"/><path d="M80 80 139 58V102L80 125Z" fill="#edb872" stroke="#6c3d21" stroke-width="2"/><path d="m44 67 58-22 15 6-58 22v26l-15-6Z" fill="#fff1ce"/><g class="box-lid"><path d="M22 58 80 37 139 58 80 80Z" fill="#f2c27e" stroke="#6c3d21" stroke-width="2"/><path d="m46 49 57 23 15-6-57-23Z" fill="#fff1ce"/><path d="m41 55 38-14 10 4-38 14Z" fill="#fff1ce"/></g><text x="30" y="88" fill="#58341f" font-size="9" font-weight="900" transform="rotate(20 30 88)">BAYGRUB</text><path d="m110 97 10-4m-7 10 9-4" stroke="#85592f" stroke-width="2"/></svg>
         </span>
-        <span class="open-copy"><span class="open-eyebrow">SPECIAL DELIVERY</span><strong id="open-label">Crack the food case</strong><span class="open-subtitle" id="open-subtitle">Tap the box. Find your flavor. <span aria-hidden="true">↗</span></span></span>
+        <span class="open-copy"><strong id="open-label">Open case</strong><span class="open-subtitle" id="open-subtitle"></span></span>
       </button>
       <p class="selection-note" id="selection-note" role="status" aria-live="polite"></p>
-      <p class="radius-note">Within 7 miles of City Center Bishop Ranch (straight-line area).<br>Curated picks · Check the restaurant for current hours.</p>
+      <p class="radius-note">7 miles from City Center Bishop Ranch · Straight-line distance</p>
     </section>
-    <footer><span class="status"><i></i> GOOD FOOD. ZERO INDECISION.</span><button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="button-label">Pause motion</span></button></footer>
+    <footer><button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="button-label">Pause motion</span></button></footer>
     <dialog class="result-dialog" id="result-dialog" aria-labelledby="result-title">
       <button class="dialog-close" type="button" aria-label="Close restaurant reveal">×</button>
-      <p class="dialog-kicker">DELIVERY COMPLETE</p>
+      <p class="dialog-kicker">SELECTED</p>
       <div class="winner-emoji" id="winner-emoji" aria-hidden="true"></div>
       <p class="winner-cuisine" id="winner-cuisine"></p>
       <h2 id="result-title"></h2>
       <p class="winner-address" id="winner-address"></p>
-      <p class="winner-message">The box has spoken. Go get something good.</p>
-      <div class="result-actions"><a class="primary-link" id="winner-directions" target="_blank" rel="noopener noreferrer">Let's eat ↗</a><a id="winner-source" target="_blank" rel="noopener noreferrer">Restaurant info ↗</a></div>
-      <button class="again-button" id="roll-again" type="button">Not feeling it? Open another box</button>
+      <div class="result-actions"><a class="primary-link" id="winner-directions" target="_blank" rel="noopener noreferrer">Directions ↗</a><a id="winner-source" target="_blank" rel="noopener noreferrer">Restaurant info ↗</a></div>
+      <button class="again-button" id="roll-again" type="button">Open again</button>
     </dialog>
     <dialog class="pool-dialog" id="pool-dialog" aria-labelledby="pool-title">
-      <div class="pool-heading"><div><p class="dialog-kicker">WHAT'S IN THE BOX?</p><h2 id="pool-title">The local lineup.</h2></div><button class="dialog-close" type="button" aria-label="Close restaurant list">×</button></div>
-      <p class="pool-explanation">Restaurants, cafés, and sweet stops within 7 miles of City Center Bishop Ranch, San Ramon. Cuisine labels describe the main menu, not dietary guarantees. Check the restaurant for current hours.</p>
+      <div class="pool-heading"><h2 id="pool-title">Restaurants</h2><button class="dialog-close" type="button" aria-label="Close restaurant list">×</button></div>
+      <p class="pool-explanation">Within 7 miles of City Center Bishop Ranch. Check restaurant links for hours and menus.</p>
       <label class="search-label"><span class="sr-only">Search restaurants or cuisine</span><input id="restaurant-search" type="search" placeholder="Search a restaurant, cuisine, or city…"></label>
       <p class="pool-results" id="pool-results" role="status"></p><div id="restaurant-list"></div>
       <p class="source-note">Compiled from official restaurant and local directories · Checked November 4, 2026 · Not an exhaustive directory.</p>

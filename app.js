@@ -5,6 +5,14 @@ const toggle = document.querySelector('.motion-toggle');
 const preference = matchMedia('(prefers-reduced-motion: reduce)');
 let paused = preference.matches;
 let spinAnimation = null;
+let soundEnabled = false;
+let audioContext = null;
+let tickFrame = null;
+let instantResult = preference.matches;
+try {
+  const saved = localStorage.getItem('baygrub-animation');
+  if (saved !== null) { instantResult = saved !== 'on'; paused = instantResult; }
+} catch { /* Storage may be disabled; the control still works for this visit. */ }
 function updateMotion() {
   document.body.classList.toggle('paused', paused);
   document.body.classList.toggle('motion-enabled', !paused);
@@ -13,7 +21,7 @@ function updateMotion() {
   toggle.querySelector('.button-label').textContent = paused ? 'Resume motion' : 'Pause motion';
   toggle.querySelector('.pause-icon').textContent = paused ? '▷' : 'Ⅱ';
   if (spinAnimation) paused ? spinAnimation.pause() : spinAnimation.play();
-  if (spinAnimation) status.textContent = paused ? 'ROLL PAUSED' : 'ROLLING…';
+  if (spinAnimation) status.textContent = paused ? 'PAUSED' : 'ROLLING';
 }
 
 const filter = document.querySelector('#cuisine-filter');
@@ -26,6 +34,8 @@ const status = document.querySelector('.reel-status');
 const note = document.querySelector('#selection-note');
 const resultDialog = document.querySelector('#result-dialog');
 const poolDialog = document.querySelector('#pool-dialog');
+const soundButton = document.querySelector('#sound-toggle');
+const instantButton = document.querySelector('#instant-toggle');
 let spinning = false;
 let winningIndex = -1;
 
@@ -66,8 +76,8 @@ function idleReel() {
   winningIndex = -1;
   renderTrack(Array.from({ length: 12 }, (_, i) => pool()[i % pool().length]));
   track.style.transform = 'translateX(-30px)';
-  note.textContent = `${pool().length} local spots. Every restaurant has the same chance.`;
-  status.textContent = 'READY TO ROLL';
+  note.textContent = `${pool().length} restaurants · Equal odds`;
+  status.textContent = 'READY';
 }
 filter.addEventListener('change', idleReel);
 idleReel();
@@ -92,54 +102,129 @@ async function openCase() {
   openButton.disabled = true;
   filter.disabled = true;
   document.querySelector('#view-restaurants').disabled = true;
-  status.textContent = 'UNBOXING…';
-  openLabel.textContent = 'Unboxing your next bite…';
-  openSubtitle.textContent = 'Something good is on its way.';
+  status.textContent = 'OPENING';
+  openLabel.textContent = 'Opening…';
+  openSubtitle.textContent = '';
   openButton.classList.add('opening');
-  note.textContent = 'The box is choosing. Hang tight…';
+  note.textContent = '';
+  instantButton.disabled = true;
+  if (soundEnabled) {
+    try { audioContext ??= new AudioContext(); await audioContext.resume(); } catch { soundEnabled = false; }
+  }
   const eligible = pool();
   const winner = pick(eligible);
   // The selected restaurant is exactly the card that stops at the center marker.
-  const index = 44 + randomIndex(5);
-  const entries = Array.from({ length: 56 }, () => pick(eligible));
+  const index = 78 + randomIndex(7);
+  const entries = Array.from({ length: 96 }, () => pick(eligible));
   entries[index] = winner;
-  await new Promise(resolve => setTimeout(resolve, paused ? 50 : 600));
+  await new Promise(resolve => setTimeout(resolve, instantResult ? 30 : 650));
   renderTrack(entries);
   winningIndex = index;
   track.style.transform = 'translateX(0px)';
   const target = centerOffset(index);
-  const reduced = paused;
-  const animation = track.animate([
+  const reduced = instantResult;
+  const duration = reduced ? 150 : 13000;
+  track.dataset.duration = String(duration);
+  const landing = target - 12;
+  // Continuous quartic deceleration: fast for several seconds, then individual
+  // cards become readable, followed by a slow last few ticks and a short settle.
+  const frames = reduced ? [
     { transform: 'translateX(0px)' },
     { transform: `translateX(${target}px)` }
-  ], { duration: reduced ? 120 : 6600, easing: 'cubic-bezier(.12,.72,.12,1)', fill: 'forwards' });
+  ] : Array.from({ length: 101 }, (_, i) => {
+    const t = i / 100;
+    const position = landing * (1 - Math.pow(1 - t, 4));
+    return { offset: t * .94, transform: `translateX(${position}px)`, filter: `blur(${(1.25 * Math.pow(1 - t, 3)).toFixed(3)}px)`, easing: i === 100 ? 'cubic-bezier(.16,1,.3,1)' : 'linear' };
+  }).concat([{ offset: 1, transform: `translateX(${target}px)`, filter: 'blur(0px)' }]);
+  const animation = track.animate(frames, { duration, easing: 'linear', fill: 'forwards' });
   spinAnimation = animation;
-  status.textContent = reduced ? 'CHOOSING…' : 'ROLLING…';
+  scene.classList.add('is-rolling');
+  status.textContent = 'ROLLING';
+  const stride = track.children[1].offsetLeft - track.children[0].offsetLeft;
+  let lastTick = -1;
+  const tick = () => {
+    if (spinAnimation !== animation) return;
+    const progress = Math.min(Number(animation.currentTime || 0) / duration / .94, 1);
+    const distance = Math.abs(landing) * (1 - Math.pow(1 - progress, 4));
+    const cardNumber = Math.floor(distance / stride);
+    if (!reduced && animation.playState === 'running' && cardNumber !== lastTick) {
+      lastTick = cardNumber;
+      playTick();
+      document.querySelector('.reel-marker').animate([
+        { filter: 'brightness(1.8)', transform: 'rotate(-1.5deg)' },
+        { filter: 'brightness(1)', transform: 'rotate(0deg)' }
+      ], { duration: 110 });
+    }
+    tickFrame = requestAnimationFrame(tick);
+  };
+  tick();
   try {
     await animation.finished;
     // Commit a responsive final position before removing the animation.
     track.style.transform = `translateX(${centerOffset(index)}px)`;
     animation.cancel();
     spinAnimation = null;
+    cancelAnimationFrame(tickFrame);
+    scene.classList.remove('is-rolling');
+    track.style.filter = '';
     track.children[index].classList.add('is-winner');
-    status.textContent = 'DELIVERY COMPLETE';
+    status.textContent = 'SELECTED';
     note.textContent = `${winner.emoji} ${winner.name} — ${winner.cuisine}`;
-    await new Promise(resolve => setTimeout(resolve, reduced ? 30 : 350));
+    if (!reduced) playTick(true);
+    await new Promise(resolve => setTimeout(resolve, reduced ? 30 : 1000));
     showWinner(winner);
   } catch {
     spinAnimation = null;
+    cancelAnimationFrame(tickFrame);
+    scene.classList.remove('is-rolling');
     idleReel();
-    note.textContent = 'That roll was interrupted. Tap the box to try again.';
+    note.textContent = 'Interrupted. Try again.';
   } finally {
     spinning = false;
     filter.disabled = false;
+    instantButton.disabled = false;
     document.querySelector('#view-restaurants').disabled = false;
     openButton.disabled = false;
     openButton.classList.remove('opening');
-    openLabel.textContent = 'Crack another food case';
-    openSubtitle.textContent = 'Another box. Another delicious possibility. ↗';
+    openLabel.textContent = 'Open case';
+    openSubtitle.textContent = '';
   }
 }
+function playTick(final = false) {
+  if (!soundEnabled || !audioContext || audioContext.state !== 'running') return;
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+  const now = audioContext.currentTime;
+  oscillator.type = 'triangle';
+  oscillator.frequency.setValueAtTime(final ? 520 : 1350, now);
+  oscillator.frequency.exponentialRampToValueAtTime(final ? 260 : 650, now + .025);
+  gain.gain.setValueAtTime(.0001, now);
+  gain.gain.exponentialRampToValueAtTime(final ? .12 : .055, now + .002);
+  gain.gain.exponentialRampToValueAtTime(.0001, now + (final ? .25 : .035));
+  oscillator.connect(gain); gain.connect(audioContext.destination);
+  oscillator.start(now); oscillator.stop(now + (final ? .26 : .04));
+  oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
+}
+soundButton.addEventListener('click', async () => {
+  soundEnabled = !soundEnabled;
+  if (soundEnabled) {
+    try { audioContext ??= new AudioContext(); await audioContext.resume(); }
+    catch { soundEnabled = false; }
+  }
+  soundButton.textContent = soundEnabled ? 'Sound: on' : 'Sound: off';
+  soundButton.setAttribute('aria-pressed', String(soundEnabled));
+});
+function updateInstant() {
+  instantButton.textContent = instantResult ? 'Animation: off' : 'Animation: on';
+  instantButton.setAttribute('aria-pressed', String(!instantResult));
+}
+instantButton.addEventListener('click', () => {
+  instantResult = !instantResult;
+  try { localStorage.setItem('baygrub-animation', instantResult ? 'off' : 'on'); } catch { /* Session only. */ }
+  if (!instantResult && paused) { paused = false; updateMotion(); }
+  updateInstant();
+});
+updateInstant();
 openButton.addEventListener('click', openCase);
 document.querySelector('#roll-again').addEventListener('click', () => {
   resultDialog.close();
@@ -156,7 +241,7 @@ for (const dialog of [resultDialog, poolDialog]) {
 function renderRestaurants(query = '') {
   const term = query.trim().toLocaleLowerCase();
   const entries = restaurants.filter(r => `${r.name} ${r.cuisine} ${r.address} ${categoryFor(r).name}`.toLocaleLowerCase().includes(term));
-  document.querySelector('#pool-results').textContent = `${entries.length} of ${restaurants.length} places${term ? ' match your search' : ' in the local lineup'}`;
+  document.querySelector('#pool-results').textContent = `${entries.length} of ${restaurants.length} restaurants`;
   const list = document.querySelector('#restaurant-list');
   list.replaceChildren(...entries.map(restaurant => {
     const row = document.createElement('div'); row.className = 'restaurant-row';

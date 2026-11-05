@@ -1,8 +1,8 @@
 # BayGrub.club
 
-A local restaurant case opener inspired by the rolling reveal of game cases. Click the animated delivery box, watch cuisine emojis roll under the center marker, and get a restaurant with its address, information link, and Google Maps link. There are no payments or purchases.
+A local restaurant case opener inspired by the rolling reveal of game cases. Click the delivery box for a 13-second reel: fast scrolling, continuous deceleration, a slow final approach and a short settle. Optional synthesized ticks follow card crossings. The result includes its address, information link and Google Maps link. There are no payments or purchases.
 
-The original artwork remains unchanged. The logo sits at the top, and the forest sways beneath the playable area. Desktop and mobile layouts, pause/resume, reduced-motion preferences, cuisine filters, a searchable lineup, and repeat openings are supported.
+The original artwork remains unchanged. The logo sits at the top, and the forest sways beneath the playable area. Desktop and mobile layouts, pause/resume, reduced-motion preferences, cuisine filters, a searchable list and repeat openings are supported. Animation on/off is visible below the reel and is remembered locally. On a first visit, reduced-motion preferences default the reel to an instant result. Sound is off until enabled.
 
 ## Restaurant pool
 
