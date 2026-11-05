@@ -1,4 +1,4 @@
-import { restaurants, categories, categoryFor } from './restaurants.js';
+import { restaurants, categoryFor } from './restaurants.js';
 
 const scene = document.querySelector('.scene');
 const toggle = document.querySelector('.motion-toggle');
@@ -24,7 +24,6 @@ function updateMotion() {
   if (spinAnimation) status.textContent = paused ? 'PAUSED' : 'ROLLING';
 }
 
-const filter = document.querySelector('#cuisine-filter');
 const track = document.querySelector('#reel-track');
 const reelWindow = document.querySelector('#reel-window');
 const openButton = document.querySelector('#open-case');
@@ -51,15 +50,7 @@ function randomIndex(length) {
   return bytes[0] % length;
 }
 const pick = array => array[randomIndex(array.length)];
-const pool = () => restaurants.filter(r => filter.value === 'all' || r.emoji === filter.value);
-
-for (const [emoji, category] of Object.entries(categories)) {
-  if (!restaurants.some(r => r.emoji === emoji)) continue;
-  const option = document.createElement('option');
-  option.value = emoji;
-  option.textContent = `${emoji} ${category.name}`;
-  filter.append(option);
-}
+const pool = () => restaurants;
 document.querySelector('#pool-count').textContent = restaurants.length;
 
 function restaurantIdentity(restaurant) {
@@ -143,7 +134,6 @@ function idleReel() {
   note.textContent = `${pool().length} restaurants · Equal odds`;
   status.textContent = 'READY';
 }
-filter.addEventListener('change', idleReel);
 idleReel();
 
 function centerOffset(index) {
@@ -166,7 +156,6 @@ async function openCase() {
   spinButton.disabled = true;
   spinButton.textContent = 'Spinning…';
   openButton.disabled = true;
-  filter.disabled = true;
   document.querySelector('#view-restaurants').disabled = true;
   status.textContent = 'OPENING';
   openLabel.textContent = 'Close box';
@@ -249,7 +238,6 @@ async function openCase() {
     spinning = false;
     spinButton.disabled = false;
     spinButton.textContent = 'Spin again';
-    filter.disabled = false;
     instantButton.disabled = false;
     document.querySelector('#view-restaurants').disabled = false;
     openButton.disabled = false;

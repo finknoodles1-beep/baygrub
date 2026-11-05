@@ -132,3 +132,45 @@ footer{justify-content:flex-end}
 .case-game .selection-note,.case-game .radius-note{background:transparent;color:#6d775e}.result-dialog{border-radius:10px;border-color:#84977a;background:#f6f2e5}.result-dialog .dialog-kicker,.winner-cuisine{color:#557355}.result-actions .primary-link{background:#385944;border-radius:4px}.again-button{color:#556c52;border-color:#aab89b}
 @keyframes branch-wind{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
 @media(max-width:700px){.botanical{top:85px;width:58px;height:120px;opacity:.4}.botanical-left{left:-23px}.botanical-right{right:-23px}.reel-header,.reel-bottom{padding-left:12px;padding-right:12px}.spin-button{min-width:160px}}
+
+/* A bold, tactile diner sign built around the original BayGrub artwork. */
+.scene{background:repeating-linear-gradient(0deg,#fff2e2 0,#fff2e2 2px,#fff0df 3px,#fff0df 4px)}
+.case-game{width:min(940px,76%)}
+.location{color:#1a1714;letter-spacing:2px;font-weight:900}
+.location-divider{color:#006eb4}
+.case-game>.open-case .open-copy strong{font-family:Arial,sans-serif;font-size:16px;font-weight:900;letter-spacing:.01em;text-transform:uppercase;color:#17140f}
+.case-game>.open-case:hover .box-illustration{filter:drop-shadow(5px 7px 0 #f68e1e55)}
+.case-game.has-opener>.open-case .open-copy strong{font-size:10px;letter-spacing:1px;color:#1c1b18;font-weight:800}
+.case-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;padding:0 2px}
+.toolbar-title{font-size:10px;font-weight:900;letter-spacing:1.5px;color:#141414}.toolbar-title span{font-size:17px;color:#f28b16;padding:0 5px}
+.pool-button{display:inline-flex;align-items:center;gap:7px;padding:8px 0;color:#141414;font-size:10px;font-weight:900;letter-spacing:.8px}
+.pool-button span:not(.toolbar-arrow){background:#111;color:#fff2e2;border-radius:2px;margin:0;padding:4px 7px;font-size:10px}.pool-button .toolbar-arrow{background:none;color:#006eb4;font-size:16px;padding:0;margin:0}
+.reel-frame{padding:0;border:3px solid #151515;border-radius:2px;background:#151515;box-shadow:7px 7px 0 #f69320,12px 12px 0 #15151520}
+.reel-header,.reel-bottom{min-height:39px;background:#151515;border:0;color:#fff3df;letter-spacing:1.8px;font-size:10px;padding:10px 16px}
+.reel-header span:first-child{display:flex;align-items:center;gap:10px}.reel-header i{display:block;width:8px;height:8px;background:#ff941c;border-radius:50%}
+.reel-status{color:#ffae45;font-size:9px;letter-spacing:1.5px}
+.reel-window{height:198px;background:#006eb4;box-shadow:none;border-block:2px solid #151515}
+.reel-window::after{box-shadow:inset 40px 0 26px -25px #12121277,inset -40px 0 26px -25px #12121277}
+.reel-track{padding:12px 0;gap:8px}
+.food-card{flex-basis:155px;height:170px;gap:5px;padding:8px 7px;background:#fff6e8;border:2px solid #171717;border-bottom:6px solid #171717;border-radius:0;box-shadow:3px 3px 0 #10101035}
+.food-card::before{display:none}.restaurant-icon{width:76px;height:76px;border:0;border-radius:0;background:transparent;box-shadow:none}
+.restaurant-icon.logo-dark{background:#211e1b;border:0}.restaurant-initials{font:900 30px Georgia,serif;letter-spacing:-2px;color:#006eb4}
+.brand-logo{inset:4px;width:calc(100% - 8px);height:calc(100% - 8px)}
+.restaurant-name{font-size:11px;font-weight:900;color:#141414;line-height:1.15;min-height:25px;text-transform:uppercase;letter-spacing:.15px}.food-type{color:#56504a;font-size:9px;letter-spacing:.35px;font-weight:700}
+.cuisine-badge{font-size:18px;bottom:-1px;right:-5px}.reel-marker{width:3px;background:#ff951a;box-shadow:0 0 0 1px #1118}.reel-marker::before,.reel-marker::after{left:-7px;border-left-width:8px;border-right-width:8px}.reel-marker::before{border-top:12px solid #ff951a}.reel-marker::after{border-bottom:12px solid #ff951a}
+.food-card.is-winner{background:#ffdb8c;box-shadow:inset 0 0 0 3px #ff951a;animation:card-lock .5s ease-out both}
+.is-rolling .reel-frame{box-shadow:7px 7px 0 #f69320,12px 12px 0 #15151520}.is-rolling .food-card{border-bottom-width:6px}
+.reel-bottom button{font-size:10px;font-weight:800;letter-spacing:.6px;color:#d8d2c7;text-transform:uppercase}.reel-bottom button[aria-pressed=true]{color:#ffae45}
+.spin-button{min-width:208px;margin-top:23px;padding:14px 32px;border:3px solid #151515;border-radius:0;background:#006eb4;color:#fff;box-shadow:5px 5px 0 #151515;font-size:17px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.spin-button:hover{background:#f69320;color:#151515;translate:-2px -2px;box-shadow:7px 7px 0 #151515}.spin-button:active{translate:3px 3px;box-shadow:2px 2px 0 #151515}
+.spin-button:disabled{background:#a5a39e;border-color:#151515;color:#292929;box-shadow:3px 3px 0 #151515}
+.case-game .selection-note,.case-game .radius-note{color:#4a3e33}.case-game .selection-note{font-weight:700}.case-game .radius-note{font-size:10px}
+.result-dialog,.pool-dialog{border:3px solid #151515;border-radius:0;background:#fff2df;box-shadow:9px 9px 0 #f69320,0 30px 100px #0006}.result-dialog .dialog-kicker,.winner-cuisine{color:#006eb4}.result-dialog h2,.pool-heading h2{color:#151515;font-weight:900}.result-actions .primary-link{background:#006eb4;border:2px solid #151515;border-radius:0;box-shadow:3px 3px 0 #151515}.again-button{color:#151515;border-color:#151515}
+@media(min-width:1500px){.reel-window{height:198px}.reel-track{padding:12px 0}}
+@media(max-width:700px){
+  .case-game{width:calc(100% - 28px)}
+  .photo-drift{top:74%}
+  .toolbar-title{font-size:9px;letter-spacing:.6px}.toolbar-title span{padding:0 2px;font-size:14px}.pool-button{font-size:9px;gap:5px;letter-spacing:.3px}.pool-button span:not(.toolbar-arrow){padding:3px 5px}
+  .reel-frame{border-width:2px;box-shadow:5px 5px 0 #f69320,8px 8px 0 #15151520}
+  .reel-header,.reel-bottom{padding:9px 11px;font-size:9px}.reel-window{height:188px}.food-card{flex-basis:138px;height:160px}.restaurant-icon{width:70px;height:70px}.restaurant-name{font-size:10px}.food-type{font-size:8px}
+  .spin-button{margin-top:19px;min-width:180px}.case-game .radius-note{font-size:9px}
+}

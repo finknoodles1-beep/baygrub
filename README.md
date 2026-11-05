@@ -13,7 +13,7 @@ Close box hides the reel. Spin again repeats the roll. The original artwork is u
 
 The area is a seven-mile straight-line radius centered on City Center Bishop Ranch, 6000 Bollinger Canyon Road, San Ramon. All records have US Census address-geocoder distance estimates within seven miles. This is not an exhaustive directory or a live open-now feed. Check the restaurant for hours and menus.
 
-Every eligible restaurant has equal odds, including repeat selections. The winner is sampled with Web Crypto rejection sampling, inserted in the reel and centered on the marker. Cuisine colors do not change odds. Cuisine filtering changes the eligible pool.
+Every eligible restaurant has equal odds, including repeat selections. The winner is sampled with Web Crypto rejection sampling, inserted in the reel and centered on the marker. Every roll uses the full restaurant pool.
 
 ## Restaurant identity assets
 
