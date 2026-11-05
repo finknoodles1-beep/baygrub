@@ -5,7 +5,7 @@ Local restaurant picker with a two-step opening:
 1. Click the delivery box. Its lid opens and the restaurant reel emerges. No restaurant is chosen yet.
 2. Click Spin. The 13-second reel decelerates, settles under the center marker and reveals the selected restaurant, address, information link and directions.
 
-Close box hides the reel. Spin again repeats the roll. The original artwork is unchanged; the logo stays at the top above an animated sunset, with moving rays, clouds, birds, stars and a swaying forest. There are no purchases.
+Once selected, the shared pick stays until someone posts a review with a photo, date, and tier or resets it. Posting returns to the picker; reviews can be viewed and edited in Tier list & history. The Beast button opens the payer picker. The original artwork is unchanged; the logo stays at the top above an animated sunset, with moving rays, clouds, birds, stars and a swaying forest. There are no purchases.
 
 ## Restaurant pool
 
@@ -30,7 +30,7 @@ The reel uses a continuous quartic slowdown, speed-dependent blur, a short final
     npm install
     npm run dev
 
-Open http://127.0.0.1:5173. No backend or API key is needed.
+Open http://127.0.0.1:5174. The local preview uses a local SQLite database in .wrangler/; it is separate from the live shared database. Node 22.13 or newer is required for node:sqlite.
 
 ## Cloudflare Workers Builds
 
@@ -41,7 +41,7 @@ Open http://127.0.0.1:5173. No backend or API key is needed.
 - Root directory: leave blank
 - Production branch: main
 
-The build copies the site and public assets into dist/. wrangler.jsonc configures Workers static assets. Pushes to the connected production branch trigger deployment after Cloudflare is configured.
+The build copies the site and public assets into dist/. The Worker serves /api/* and Cloudflare D1 stores the shared pick, reviews, and compressed photos. Wrangler automatically provisions the D1 binding on the first deployment; the Worker creates its tables. Pushes to the connected production branch trigger deployment after Cloudflare is configured. Everyone who can access the site can add, edit, delete, and reset group data. The local preview uses separate data.
 
 ## Editing
 

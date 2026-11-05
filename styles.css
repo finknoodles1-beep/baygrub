@@ -194,3 +194,8 @@ footer{justify-content:flex-end}
 @keyframes stars-shimmer{from{opacity:.35}to{opacity:1}}
 @keyframes birds-cross{from{transform:translateX(0)}to{transform:translateX(130vw)}}
 @media(max-width:700px){.sun-halo{left:80%;top:22%}.sun-disc{width:150px}.sun-rays{width:180vmax}.cloud-one{top:24%;left:-20%}.cloud-two{top:48%;left:27%}.cloud-three{top:8%;left:56%}.bird-flight{top:37%;width:65px}.sky-stars{left:5%}.photo-drift{top:79%}}
+
+/* Bring the treeline further up into the scene. */
+.artwork .forest{height:27%!important}
+@media(max-width:700px){.artwork .forest{height:26%!important}}
+[hidden]{display:none!important}

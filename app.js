@@ -1,3 +1,4 @@
+import { initShared, reserveRestaurant, showSelected } from './shared.js';
 import { restaurants, categoryFor } from './restaurants.js';
 
 const scene = document.querySelector('.scene');
@@ -150,6 +151,7 @@ function showWinner(restaurant) {
 async function openCase() {
   if (spinning || revealing || openerPanel.hidden) return;
   spinning = true;
+  window.baygrubSpinning = true;
   spinButton.disabled = true;
   spinButton.textContent = 'Spinning…';
   openButton.disabled = true;
@@ -164,7 +166,15 @@ async function openCase() {
     try { audioContext ??= new AudioContext(); await audioContext.resume(); } catch { soundEnabled = false; }
   }
   const eligible = pool();
-  const winner = pick(eligible);
+  let winner = pick(eligible);
+  let reservation;
+  try {
+    reservation = await reserveRestaurant(winner);
+    if (!reservation.created) { window.baygrubSpinning = false; spinning = false; spinButton.disabled = false; openButton.disabled = false; document.querySelector('#view-restaurants').disabled = false; instantButton.disabled = false; showSelected(reservation.current); return; }
+    winner = reservation.current.restaurant;
+  } catch (error) {
+    window.baygrubSpinning = false; spinning = false; spinButton.disabled = false; spinButton.textContent = 'Spin'; openButton.disabled = false; document.querySelector('#view-restaurants').disabled = false; instantButton.disabled = false; status.textContent = 'OFFLINE'; note.textContent = error.message || 'Could not save the pick. Try again.'; return;
+  }
   // The selected restaurant is exactly the card that stops at the center marker.
   const index = 78 + randomIndex(7);
   const entries = Array.from({ length: 96 }, () => pick(eligible));
@@ -224,7 +234,8 @@ async function openCase() {
     note.textContent = `${winner.name} — ${winner.cuisine}`;
     if (!reduced) playTick(true);
     await new Promise(resolve => setTimeout(resolve, reduced ? 30 : 1000));
-    showWinner(winner);
+    window.baygrubSpinning = false;
+    showSelected(reservation.current);
   } catch {
     spinAnimation = null;
     cancelAnimationFrame(tickFrame);
@@ -233,6 +244,7 @@ async function openCase() {
     note.textContent = 'Interrupted. Try again.';
   } finally {
     spinning = false;
+    window.baygrubSpinning = false;
     spinButton.disabled = false;
     spinButton.textContent = 'Spin again';
     instantButton.disabled = false;
@@ -342,3 +354,6 @@ for (let i = 0; i < 22; i++) {
   dot.style.cssText = `left:${(i * 47.3) % 100}%;top:${(i * 29.7) % 100}%;--duration:${6 + i % 5}s;--delay:-${i * .9}s`;
   fireflies.append(dot);
 }
+
+let returningFromReview = false;
+initShared({ onShowPicker: () => { game.hidden = false; if (returningFromReview) { openerPanel.hidden = true; game.classList.remove('has-opener'); openButton.classList.remove('opening'); openButton.setAttribute('aria-expanded', 'false'); openButton.setAttribute('aria-label', 'Open delivery box'); openLabel.textContent = 'Open box'; idleReel(); returningFromReview = false; } }, onShowReview: () => { game.hidden = true; returningFromReview = true; } });

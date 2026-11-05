@@ -9,7 +9,10 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%230575b5' stroke='white' stroke-width='4' d='M50 4 62 33 95 28 75 55 87 87 54 76 28 97 27 64 3 44 35 35Z'/%3E%3C/svg%3E">
   <link rel="preload" as="image" href="/baygrub.jpg">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/shared.css">
+  <link rel="stylesheet" href="/beast.css">
   <script src="/app.js" type="module"></script>
+  <script src="/beast.js" type="module"></script>
 </head>
 <body>
   <main class="scene" aria-labelledby="site-title">
@@ -32,7 +35,8 @@
       <div class="drift orange-drift"><svg class="star orange" viewBox="4880 1140 470 460"><defs><clipPath id="crop6"><rect x="4880" y="1140" width="470" height="460"/></clipPath></defs><g clip-path="url(#crop6)"><image href="/baygrub.jpg" width="5692" height="3378"/></g></svg></div>
       <div class="fireflies"></div>
     </div>
-    <section class="case-game" aria-label="Restaurant picker">
+    <nav class="site-nav"><button id="history-open" type="button">Tier list & history</button><button id="beast-open" class="beast-badge" type="button" aria-label="Open who pays slot machine"><span>⚡</span> BEAST <small>WHO PAYS?</small></button></nav><p id="shared-status" class="shared-status" role="status">Connecting to the group…</p>
+    <section class="case-game" aria-label="Restaurant picker" hidden>
       <div class="location">SAN RAMON, CA <span class="location-divider">/</span> 7-MILE RADIUS</div>
       <button class="open-case" id="open-case" type="button" aria-label="Open delivery box" aria-expanded="false" aria-controls="opener-panel">
         <span class="box-illustration" aria-hidden="true">
@@ -56,6 +60,19 @@
       <p class="selection-note" id="selection-note" role="status" aria-live="polite"></p>
       <p class="radius-note">7 miles from City Center Bishop Ranch · Straight-line distance</p>
     </section>
+
+    <section id="review-view" class="review-view" hidden>
+      <div class="review-card"><div class="review-heading"><div><p class="eyebrow">THE NEXT STOP</p><h2 id="current-name"></h2><p id="current-details"></p></div><button id="reset-pick" class="subtle-button" type="button">Reset pick</button></div>
+      <p class="waiting-copy">This is the group's pick until the review is posted.</p>
+      <a id="current-map" target="_blank" rel="noopener noreferrer">Get directions ↗</a>
+      <form id="review-form"><label>Review <span id="word-count">0 / 150 words</span><textarea name="review" rows="4" placeholder="What did you think?" required></textarea></label>
+      <fieldset><legend>Pick a tier</legend><div class="tier-choices"><label><input type="radio" name="tier" value="S" required><span>S</span></label><label><input type="radio" name="tier" value="A"><span>A</span></label><label><input type="radio" name="tier" value="B"><span>B</span></label><label><input type="radio" name="tier" value="C"><span>C</span></label><label><input type="radio" name="tier" value="D"><span>D</span></label><label><input type="radio" name="tier" value="F"><span>F</span></label></div></fieldset>
+      <div class="review-fields"><label>Visit date<input type="date" name="date" required></label><label>Photo<input type="file" name="photo" accept="image/jpeg,image/png,image/webp" required></label></div><img id="photo-preview" class="photo-preview" alt="Photo preview" hidden><p id="form-message" role="status"></p><button class="spin-button" type="submit">Post review</button></form></div>
+    </section>
+    <dialog id="history-dialog" class="group-dialog"><div class="group-dialog-heading"><div><p class="eyebrow">THE GROUP'S PICKS</p><h2>Tier list & history</h2></div><button type="button" class="group-close" data-close="history-dialog" aria-label="Close">×</button></div><div id="history-list"></div><button id="clear-history" class="danger-button" type="button">Clear history</button></dialog>
+    <dialog id="edit-dialog" class="group-dialog"><div class="group-dialog-heading"><h2>Edit review</h2><button type="button" class="group-close" data-close="edit-dialog" aria-label="Close">×</button></div><form id="edit-form"><p id="edit-name"></p><label>Review<textarea name="review" rows="4" required></textarea></label><label>Tier<select name="tier"><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>F</option></select></label><label>Visit date<input name="date" type="date" required></label><label>Replace photo (optional)<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label><p id="edit-message" role="status"></p><button class="spin-button">Save changes</button></form></dialog>
+    <section id="beast-view" class="beast-view" hidden><div class="beast-panel"><button id="beast-back" class="beast-back" type="button">← Back to BayGrub</button><p class="beast-kicker">THE BILL DECIDER</p><h2>WHO PAYS<span>?</span></h2><p>Pick who's here, then pull the lever.</p><div id="player-list" class="player-list"></div><div class="slot-machine"><div class="slot-top">FIVE OF A KIND</div><div id="slots" class="slots" aria-live="off"></div><button id="slot-lever" class="slot-lever" type="button"><span></span> PULL</button></div><p id="slot-result" class="slot-result" role="status"></p></div></section><div id="money-rain" class="money-rain" aria-hidden="true"></div>
+
     <footer><button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="button-label">Pause motion</span></button></footer>
     <dialog class="result-dialog" id="result-dialog" aria-labelledby="result-title">
       <button class="dialog-close" type="button" aria-label="Close restaurant reveal">×</button>
