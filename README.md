@@ -1,22 +1,29 @@
 # BayGrub.club
 
-A local restaurant case opener inspired by the rolling reveal of game cases. Click the delivery box for a 13-second reel: fast scrolling, continuous deceleration, a slow final approach and a short settle. Optional synthesized ticks follow card crossings. The result includes its address, information link and Google Maps link. There are no payments or purchases.
+Local restaurant picker with a two-step opening:
 
-The original artwork remains unchanged. The logo sits at the top, and the forest sways beneath the playable area. Desktop and mobile layouts, pause/resume, reduced-motion preferences, cuisine filters, a searchable list and repeat openings are supported. Animation on/off is visible below the reel and is remembered locally. On a first visit, reduced-motion preferences default the reel to an instant result. Sound is off until enabled.
+1. Click the delivery box. Its lid opens and the restaurant reel emerges. No restaurant is chosen yet.
+2. Click Spin. The 13-second reel decelerates, settles under the center marker and reveals the selected restaurant, address, information link and directions.
+
+Close box hides the reel. Spin again repeats the roll. The original artwork is unchanged; the logo stays at the top and the forest sways below the picker. There are no purchases.
 
 ## Restaurant pool
 
-86 curated locations across San Ramon, Danville and Dublin, within a seven-mile straight-line area centered on City Center Bishop Ranch, 6000 Bollinger Canyon Road, San Ramon. This is a curated list, not an exhaustive directory or a live open-now feed. Hours and dietary suitability must be checked with the restaurant.
+29 local restaurants remain after excluding national/regional chains, multi-location brands, conventional fast-food outlets and ambiguous group/franchise cases. This stricter selection replaces the previous 86-place pool. Official restaurant websites were checked on November 4, 2026; each entry in restaurants.js links its official site.
 
-Each entry in restaurants.js includes an address, cuisine, emoji and source. Official restaurant pages, the City Center Bishop Ranch directory, and the Town of Danville dining directory were consulted on November 4, 2026. US Census address geocoding confirmed distances for 82 of 86 locations. Four addresses could not be resolved by the geocoder and were retained based on their streets in central Danville/San Ramon/west Dublin, well inside the area. Distance values are approximate, not driving distances. One Fallon Road location outside seven miles was excluded.
+The area is a seven-mile straight-line radius centered on City Center Bishop Ranch, 6000 Bollinger Canyon Road, San Ramon. All retained records have US Census address-geocoder distance estimates within seven miles. This is not an exhaustive directory or a live open-now feed. Check the restaurant for hours and menus.
 
-Every restaurant in the active cuisine pool has an equal chance, including repeat selections. The winner is sampled first with rejection sampling from Web Crypto, inserted into the reel, and centered exactly on the marker. Cuisine colors are visual labels and do not change selection odds. Changing the cuisine filter changes the eligible pool.
+Every eligible restaurant has equal odds, including repeat selections. The winner is sampled with Web Crypto rejection sampling, inserted in the reel and centered on the marker. Cuisine colors do not change odds. Cuisine filtering changes the eligible pool.
 
-Main sources:
-- https://citycenterbishopranch.com/directory/dining/
-- https://www.danville.ca.gov/1066/Eat-in-Danville
-- Official location links in each restaurant record
-- https://geocoding.geo.census.gov/geocoder/
+## Restaurant identity assets
+
+16 usable logos were downloaded from the restaurants' official website headers into public/logos/. Their original asset URLs are recorded as logoSource in restaurants.js. Brand images remain unchanged. An unusable blank logo was rejected.
+
+Each card includes the restaurant's name and cuisine. Missing or failed logos fall back to a name-initial emblem with a cuisine badge; these emblems are not official logos. The same identity treatment appears in the list and result dialog. No external logo service or visitor tracking request is used.
+
+## Motion and sound
+
+The reel uses a continuous quartic slowdown, speed-dependent blur, a short final settle and an optional synthesized tick per card crossing. Sound starts off. Animation on/off is visible below the reel and remembered locally. On a first visit, reduced-motion preferences select an instant result. Pause/resume works during a roll. Revealing the reel does not start a spin.
 
 ## Local preview
 
@@ -34,8 +41,8 @@ Open http://127.0.0.1:5173. No backend or API key is needed.
 - Root directory: leave blank
 - Production branch: main
 
-The build copies the website and artwork into dist/. wrangler.jsonc configures Workers static assets. Pushes to the connected production branch trigger deployment after Cloudflare is configured.
+The build copies the site and public assets into dist/. wrangler.jsonc configures Workers static assets. Pushes to the connected production branch trigger deployment after Cloudflare is configured.
 
 ## Editing
 
-index.html holds the layout; styles.css controls responsive layouts and animation; app.js controls the case opening and motion; restaurants.js holds the pool and cuisine key. public/baygrub.jpg is the original artwork, unchanged.
+index.html holds the layout; styles.css controls layout and animation; app.js handles reveal, spinning and motion; restaurants.js holds the restaurant pool, cuisine key and logo provenance. public/baygrub.jpg is the original artwork.

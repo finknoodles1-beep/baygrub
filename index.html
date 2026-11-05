@@ -24,9 +24,15 @@
       <div class="drift orange-drift"><svg class="star orange" viewBox="4880 1140 470 460"><defs><clipPath id="crop6"><rect x="4880" y="1140" width="470" height="460"/></clipPath></defs><g clip-path="url(#crop6)"><image href="/baygrub.jpg" width="5692" height="3378"/></g></svg></div>
       <div class="fireflies"></div>
     </div>
-    <section class="case-game" aria-labelledby="game-title">
+    <section class="case-game" aria-label="Restaurant picker">
       <div class="location">SAN RAMON, CA <span class="location-divider">/</span> 7-MILE RADIUS</div>
-      <h2 id="game-title">Restaurant case</h2>
+      <button class="open-case" id="open-case" type="button" aria-label="Open delivery box" aria-expanded="false" aria-controls="opener-panel">
+        <span class="box-illustration" aria-hidden="true">
+          <svg viewBox="0 0 160 140"><ellipse cx="80" cy="125" rx="57" ry="8" fill="#231b1420"/><g class="box-treats"><text x="38" y="54" font-size="27">🍔</text><text x="88" y="48" font-size="26">🍣</text><text x="67" y="70" font-size="24">🌮</text></g><path d="M22 58 80 37 139 58 80 80Z" fill="#ffe3aa" stroke="#6c3d21" stroke-width="2"/><path d="M22 58 80 80V125L22 102Z" fill="#d69a54" stroke="#6c3d21" stroke-width="2"/><path d="M80 80 139 58V102L80 125Z" fill="#edb872" stroke="#6c3d21" stroke-width="2"/><path d="m44 67 58-22 15 6-58 22v26l-15-6Z" fill="#fff1ce"/><g class="box-lid"><path d="M22 58 80 37 139 58 80 80Z" fill="#f2c27e" stroke="#6c3d21" stroke-width="2"/><path d="m46 49 57 23 15-6-57-23Z" fill="#fff1ce"/><path d="m41 55 38-14 10 4-38 14Z" fill="#fff1ce"/></g><text x="30" y="88" fill="#58341f" font-size="9" font-weight="900" transform="rotate(20 30 88)">BAYGRUB</text><path d="m110 97 10-4m-7 10 9-4" stroke="#85592f" stroke-width="2"/></svg>
+        </span>
+        <span class="open-copy"><strong id="open-label">Open box</strong><span class="open-subtitle" id="open-subtitle"></span></span>
+      </button>
+      <div class="opener-panel" id="opener-panel" hidden>
       <div class="case-toolbar">
         <label class="craving-label"><span class="sr-only">Filter by cuisine</span><select id="cuisine-filter"><option value="all">All cuisines</option></select></label>
         <button class="pool-button" id="view-restaurants" type="button">Restaurants <span id="pool-count"></span></button>
@@ -36,12 +42,9 @@
         <div class="reel-window" id="reel-window" aria-label="Restaurant roulette"><div class="reel-track" id="reel-track" aria-hidden="true"></div><div class="reel-marker" aria-hidden="true"></div></div>
         <div class="reel-bottom"><button id="sound-toggle" type="button" aria-pressed="false">Sound: off</button><button id="instant-toggle" type="button" aria-pressed="true">Animation: on</button></div>
       </div>
-      <button class="open-case" id="open-case" type="button" aria-label="Open food case and choose a restaurant">
-        <span class="box-illustration" aria-hidden="true">
-          <svg viewBox="0 0 160 140"><ellipse cx="80" cy="125" rx="57" ry="8" fill="#231b1420"/><g class="box-treats"><text x="38" y="54" font-size="27">🍔</text><text x="88" y="48" font-size="26">🍣</text><text x="67" y="70" font-size="24">🌮</text></g><path d="M22 58 80 37 139 58 80 80Z" fill="#ffe3aa" stroke="#6c3d21" stroke-width="2"/><path d="M22 58 80 80V125L22 102Z" fill="#d69a54" stroke="#6c3d21" stroke-width="2"/><path d="M80 80 139 58V102L80 125Z" fill="#edb872" stroke="#6c3d21" stroke-width="2"/><path d="m44 67 58-22 15 6-58 22v26l-15-6Z" fill="#fff1ce"/><g class="box-lid"><path d="M22 58 80 37 139 58 80 80Z" fill="#f2c27e" stroke="#6c3d21" stroke-width="2"/><path d="m46 49 57 23 15-6-57-23Z" fill="#fff1ce"/><path d="m41 55 38-14 10 4-38 14Z" fill="#fff1ce"/></g><text x="30" y="88" fill="#58341f" font-size="9" font-weight="900" transform="rotate(20 30 88)">BAYGRUB</text><path d="m110 97 10-4m-7 10 9-4" stroke="#85592f" stroke-width="2"/></svg>
-        </span>
-        <span class="open-copy"><strong id="open-label">Open case</strong><span class="open-subtitle" id="open-subtitle"></span></span>
-      </button>
+
+        <button class="spin-button" id="spin-case" type="button">Spin</button>
+      </div>
       <p class="selection-note" id="selection-note" role="status" aria-live="polite"></p>
       <p class="radius-note">7 miles from City Center Bishop Ranch · Straight-line distance</p>
     </section>
@@ -54,7 +57,7 @@
       <h2 id="result-title"></h2>
       <p class="winner-address" id="winner-address"></p>
       <div class="result-actions"><a class="primary-link" id="winner-directions" target="_blank" rel="noopener noreferrer">Directions ↗</a><a id="winner-source" target="_blank" rel="noopener noreferrer">Restaurant info ↗</a></div>
-      <button class="again-button" id="roll-again" type="button">Open again</button>
+      <button class="again-button" id="roll-again" type="button">Spin again</button>
     </dialog>
     <dialog class="pool-dialog" id="pool-dialog" aria-labelledby="pool-title">
       <div class="pool-heading"><h2 id="pool-title">Restaurants</h2><button class="dialog-close" type="button" aria-label="Close restaurant list">×</button></div>

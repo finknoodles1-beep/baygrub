@@ -28,6 +28,9 @@ const filter = document.querySelector('#cuisine-filter');
 const track = document.querySelector('#reel-track');
 const reelWindow = document.querySelector('#reel-window');
 const openButton = document.querySelector('#open-case');
+const spinButton = document.querySelector('#spin-case');
+const openerPanel = document.querySelector('#opener-panel');
+const game = document.querySelector('.case-game');
 const openLabel = document.querySelector('#open-label');
 const openSubtitle = document.querySelector('#open-subtitle');
 const status = document.querySelector('.reel-status');
@@ -37,6 +40,7 @@ const poolDialog = document.querySelector('#pool-dialog');
 const soundButton = document.querySelector('#sound-toggle');
 const instantButton = document.querySelector('#instant-toggle');
 let spinning = false;
+let revealing = false;
 let winningIndex = -1;
 
 // Rejection sampling avoids favoring a restaurant when the pool size changes.
@@ -58,23 +62,83 @@ for (const [emoji, category] of Object.entries(categories)) {
 }
 document.querySelector('#pool-count').textContent = restaurants.length;
 
+function restaurantIdentity(restaurant) {
+  const icon = document.createElement('span');
+  icon.className = 'restaurant-icon';
+  icon.style.setProperty('--cuisine-color', categoryFor(restaurant).color);
+  icon.setAttribute('aria-hidden', 'true');
+  const initials = document.createElement('span');
+  initials.className = 'restaurant-initials';
+  initials.textContent = restaurant.name.replace(/^the\s+/i, '').split(/[\s!&]+/).filter(Boolean).slice(0, 2).map(word => word[0]).join('').toLocaleUpperCase();
+  icon.append(initials);
+  if (restaurant.logo) {
+    icon.classList.toggle('logo-dark', restaurant.logoTheme === 'dark');
+    const image = document.createElement('img');
+    image.className = 'brand-logo'; image.alt = ''; image.src = restaurant.logo;
+    image.addEventListener('load', () => icon.classList.add('has-logo'), { once: true });
+    image.addEventListener('error', () => image.remove(), { once: true });
+    icon.append(image);
+  }
+  const cuisine = document.createElement('span');
+  cuisine.className = 'cuisine-badge'; cuisine.textContent = restaurant.emoji;
+  icon.append(cuisine);
+  return icon;
+}
+
+async function revealOpener() {
+  if (spinning || revealing) return;
+  if (!openerPanel.hidden) {
+    openerPanel.hidden = true;
+    game.classList.remove('has-opener');
+    openButton.classList.remove('opening');
+    openLabel.textContent = 'Open box';
+    openButton.setAttribute('aria-label', 'Open delivery box');
+    openButton.setAttribute('aria-expanded', 'false');
+    return;
+  }
+  revealing = true;
+  openButton.disabled = true;
+  spinButton.disabled = true;
+  const reduced = instantResult || paused;
+  openButton.classList.add('opening');
+  openLabel.textContent = 'Opening…';
+  await new Promise(resolve => setTimeout(resolve, reduced ? 20 : 450));
+  game.classList.add('has-opener');
+  openLabel.textContent = 'Close box';
+  openButton.setAttribute('aria-label', 'Close delivery box');
+  openButton.setAttribute('aria-expanded', 'true');
+  openerPanel.hidden = false;
+  const emerge = openerPanel.animate([
+    { opacity: 0, transform: 'translateY(-70px) scale(.08,.04)', filter: 'blur(5px)' },
+    { opacity: .85, transform: 'translateY(-12px) scale(.96,1.02)', filter: 'blur(0px)', offset: .72 },
+    { opacity: 1, transform: 'translateY(0) scale(1)', filter: 'blur(0px)' }
+  ], { duration: reduced ? 120 : 1000, easing: 'cubic-bezier(.16,1,.3,1)' });
+  try { await emerge.finished; } finally {
+    revealing = false;
+    openButton.disabled = false;
+    spinButton.disabled = false;
+    spinButton.focus({ preventScroll: true });
+  }
+}
+
 function renderTrack(entries) {
   track.replaceChildren(...entries.map(restaurant => {
     const card = document.createElement('div');
     card.className = 'food-card';
     card.dataset.restaurant = restaurant.name;
     card.style.setProperty('--cuisine-color', categoryFor(restaurant).color);
-    const emoji = document.createElement('span');
-    emoji.className = 'food-emoji'; emoji.textContent = restaurant.emoji;
+    const name = document.createElement('strong');
+    name.className = 'restaurant-name'; name.textContent = restaurant.name;
     const cuisine = document.createElement('span');
     cuisine.className = 'food-type'; cuisine.textContent = restaurant.cuisine;
-    card.append(emoji, cuisine);
+    card.append(restaurantIdentity(restaurant), name, cuisine);
     return card;
   }));
 }
 function idleReel() {
   winningIndex = -1;
-  renderTrack(Array.from({ length: 12 }, (_, i) => pool()[i % pool().length]));
+  const preview = [...pool()].sort((a, b) => Number(Boolean(b.logo)) - Number(Boolean(a.logo)));
+  renderTrack(Array.from({ length: 12 }, (_, i) => preview[i % preview.length]));
   track.style.transform = 'translateX(-30px)';
   note.textContent = `${pool().length} restaurants · Equal odds`;
   status.textContent = 'READY';
@@ -87,7 +151,7 @@ function centerOffset(index) {
   return reelWindow.clientWidth / 2 - (card.offsetLeft + card.offsetWidth / 2);
 }
 function showWinner(restaurant) {
-  document.querySelector('#winner-emoji').textContent = restaurant.emoji;
+  document.querySelector('#winner-emoji').replaceChildren(restaurantIdentity(restaurant));
   document.querySelector('#winner-cuisine').textContent = restaurant.cuisine;
   document.querySelector('#result-title').textContent = restaurant.name;
   document.querySelector('#winner-address').textContent = restaurant.address;
@@ -97,13 +161,15 @@ function showWinner(restaurant) {
 }
 
 async function openCase() {
-  if (spinning) return;
+  if (spinning || revealing || openerPanel.hidden) return;
   spinning = true;
+  spinButton.disabled = true;
+  spinButton.textContent = 'Spinning…';
   openButton.disabled = true;
   filter.disabled = true;
   document.querySelector('#view-restaurants').disabled = true;
   status.textContent = 'OPENING';
-  openLabel.textContent = 'Opening…';
+  openLabel.textContent = 'Close box';
   openSubtitle.textContent = '';
   openButton.classList.add('opening');
   note.textContent = '';
@@ -117,7 +183,7 @@ async function openCase() {
   const index = 78 + randomIndex(7);
   const entries = Array.from({ length: 96 }, () => pick(eligible));
   entries[index] = winner;
-  await new Promise(resolve => setTimeout(resolve, instantResult ? 30 : 650));
+  await new Promise(resolve => setTimeout(resolve, 30));
   renderTrack(entries);
   winningIndex = index;
   track.style.transform = 'translateX(0px)';
@@ -181,12 +247,13 @@ async function openCase() {
     note.textContent = 'Interrupted. Try again.';
   } finally {
     spinning = false;
+    spinButton.disabled = false;
+    spinButton.textContent = 'Spin again';
     filter.disabled = false;
     instantButton.disabled = false;
     document.querySelector('#view-restaurants').disabled = false;
     openButton.disabled = false;
-    openButton.classList.remove('opening');
-    openLabel.textContent = 'Open case';
+    openLabel.textContent = 'Close box';
     openSubtitle.textContent = '';
   }
 }
@@ -225,7 +292,8 @@ instantButton.addEventListener('click', () => {
   updateInstant();
 });
 updateInstant();
-openButton.addEventListener('click', openCase);
+openButton.addEventListener('click', revealOpener);
+spinButton.addEventListener('click', openCase);
 document.querySelector('#roll-again').addEventListener('click', () => {
   resultDialog.close();
   openCase();
@@ -245,7 +313,7 @@ function renderRestaurants(query = '') {
   const list = document.querySelector('#restaurant-list');
   list.replaceChildren(...entries.map(restaurant => {
     const row = document.createElement('div'); row.className = 'restaurant-row';
-    const emoji = document.createElement('span'); emoji.className = 'row-emoji'; emoji.textContent = restaurant.emoji; emoji.setAttribute('aria-hidden', 'true');
+    const emoji = restaurantIdentity(restaurant);
     const copy = document.createElement('div'); copy.className = 'row-copy';
     const name = document.createElement('strong'); name.textContent = restaurant.name;
     const details = document.createElement('p'); details.textContent = `${restaurant.cuisine} · ${restaurant.address}`;
