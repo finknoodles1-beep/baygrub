@@ -715,7 +715,377 @@ export const restaurants = [
     "address": "6830 Village Parkway, Dublin, CA 94568",
     "source": "https://www.biryaniz.com/",
     "distanceMiles": 4.24
+  },
+  {
+    "name": "Mom's Pho & Banh Mi",
+    "address": "7459 Amador Valley Blvd, Dublin, CA",
+    "cuisine": "Vietnamese",
+    "emoji": "🍲",
+    "source": "https://www.theinfatuation.com/san-francisco/reviews/moms-pho-and-banh-mi",
+    "distanceMiles": 3.97
+  },
+  {
+    "name": "Taqueria Los Pericos",
+    "address": "7473 Village Pkwy, Dublin, CA",
+    "cuisine": "Mexican",
+    "emoji": "🌮",
+    "source": "https://www.winecountry.com/businesses/16955/taqueria-los-pericos",
+    "distanceMiles": 3.84
+  },
+  {
+    "name": "Amalfi Mediterranean Fusion",
+    "address": "7111 Village Pkwy, Dublin, CA",
+    "cuisine": "Mediterranean",
+    "emoji": "🧆",
+    "source": "https://amalfifusion.com/about/",
+    "distanceMiles": 4.06
+  },
+  {
+    "name": "Relo Vietnamese Sandwich and Coffee",
+    "address": "7323 Village Pkwy, Dublin, CA",
+    "cuisine": "Vietnamese",
+    "emoji": "🍲",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 3.92
+  },
+  {
+    "name": "Demiya",
+    "address": "7477 Village Pkwy, Dublin, CA",
+    "cuisine": "Japanese curry",
+    "emoji": "🍛",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 3.84
+  },
+  {
+    "name": "Khyber Pass Kabob",
+    "address": "7467 Village Pkwy, Dublin, CA",
+    "cuisine": "Afghan",
+    "emoji": "🍢",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 3.85
+  },
+  {
+    "name": "Mirchi Cafe and Masala Pizza",
+    "address": "7083 Village Pkwy, Dublin, CA",
+    "cuisine": "Indian and pizza",
+    "emoji": "🍕",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.08
+  },
+  {
+    "name": "Athens Burger",
+    "address": "6999 Dublin Blvd, Dublin, CA",
+    "cuisine": "Burgers",
+    "emoji": "🍔",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.45
+  },
+  {
+    "name": "Caspers Hot Dogs",
+    "address": "6998 Village Pkwy, Dublin, CA",
+    "cuisine": "Hot dogs",
+    "emoji": "🍔",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.15
+  },
+  {
+    "name": "Raya",
+    "address": "7150 Village Pkwy, Dublin, CA",
+    "cuisine": "Indian",
+    "emoji": "🍛",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.03
+  },
+  {
+    "name": "Rasraaj Indian Cafe",
+    "address": "7375 Amador Valley Blvd, Dublin, CA",
+    "cuisine": "Indian vegetarian",
+    "emoji": "🍛",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 3.97
+  },
+  {
+    "name": "Dublin Skillet",
+    "address": "7265 Amador Valley Blvd, Dublin, CA",
+    "cuisine": "Breakfast and American",
+    "emoji": "🥞",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 3.98
+  },
+  {
+    "name": "INC 82 Brewing",
+    "address": "7370 San Ramon Rd, Dublin, CA",
+    "cuisine": "American brewpub",
+    "emoji": "🍔",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.0
+  },
+  {
+    "name": "Torarenbou Sushi Bistro",
+    "address": "7435 Amador Valley Blvd, Dublin, CA",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 3.97
+  },
+  {
+    "name": "Yanagi Sushi & Grill",
+    "address": "6599 Dublin Blvd, Dublin, CA",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.77
+  },
+  {
+    "name": "Yafa Hummus",
+    "address": "7012 Amador Plaza Rd, Dublin, CA",
+    "cuisine": "Mediterranean",
+    "emoji": "🧆",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.17
+  },
+  {
+    "name": "East Bay Buffet",
+    "address": "7400 San Ramon Rd, Dublin, CA",
+    "cuisine": "Chinese buffet",
+    "emoji": "🥡",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 3.97
+  },
+  {
+    "name": "Yummy Hainan Chicken",
+    "address": "7265 Regional St, Dublin, CA",
+    "cuisine": "Chinese Hainanese",
+    "emoji": "🥡",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.18
+  },
+  {
+    "name": "Sodam",
+    "address": "7992 Amador Valley Blvd, Dublin, CA",
+    "cuisine": "Korean",
+    "emoji": "🍚",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.08
+  },
+  {
+    "name": "Taqueria Azteca",
+    "address": "7155 Amador Plaza Rd, Dublin, CA",
+    "cuisine": "Mexican",
+    "emoji": "🌮",
+    "source": "https://visittrivalley.com/rw-participant-test-page/",
+    "distanceMiles": 4.09
+  },
+  {
+    "name": "Casa Orozco",
+    "address": "7995 Amador Valley Blvd, Dublin, CA",
+    "cuisine": "Mexican",
+    "emoji": "🌮",
+    "source": "https://www.iexitapp.com/best_food/California/4/Dublin/2316",
+    "distanceMiles": 4.07
+  },
+  {
+    "name": "DareDevil Dogs",
+    "address": "2550 San Ramon Valley Blvd, San Ramon, CA",
+    "cuisine": "Hot dogs and burgers",
+    "emoji": "🍔",
+    "source": "https://daredevildogs.com/",
+    "distanceMiles": 1.01
+  },
+  {
+    "name": "Rosmarino",
+    "address": "2065 San Ramon Valley Blvd, San Ramon, CA",
+    "cuisine": "Italian Californian",
+    "emoji": "🍕",
+    "source": "https://www.rosmarinosanramon.com/",
+    "distanceMiles": 1.88
+  },
+  {
+    "name": "Senro Sushi",
+    "address": "2475 San Ramon Valley Blvd, San Ramon, CA",
+    "cuisine": "Japanese sushi",
+    "emoji": "🍣",
+    "source": "https://localsanramon.com/eat-and-drink/",
+    "distanceMiles": 1.25
+  },
+  {
+    "name": "kibi's Cafe",
+    "address": "21 Railroad Ave, Danville, CA",
+    "cuisine": "Vietnamese",
+    "emoji": "🍲",
+    "source": "https://bayareatelegraph.com/2025/12/14/popular-orinda-vietnamese-cafe-opens-new-branch-in-danville/",
+    "distanceMiles": 4.91
+  },
+  {
+    "name": "Albi's",
+    "address": "455 Hartz Ave, Danville, CA",
+    "cuisine": "Middle Eastern",
+    "emoji": "🍢",
+    "source": "https://mcguireolsonrealestateteam.com/blog/whats-new-on-hartz-and-railroad-a-summer-field-guide-for-danville-residents",
+    "distanceMiles": 4.63
+  },
+  {
+    "name": "Rancho Cantina",
+    "address": "501 Hartz Ave, Danville, CA",
+    "cuisine": "Mexican",
+    "emoji": "🌮",
+    "source": "https://eatdanville.com/",
+    "distanceMiles": 4.58
+  },
+  {
+    "name": "Danville Brewing Company",
+    "address": "200 Railroad Ave, Danville, CA",
+    "cuisine": "American brewpub",
+    "emoji": "🍔",
+    "source": "https://business.danvilleareachamber.com/list/category/restaurants-1184",
+    "distanceMiles": 4.67
+  },
+  {
+    "name": "Domenico's Deli",
+    "address": "682 Hartz Ave, Danville, CA",
+    "cuisine": "Sandwiches",
+    "emoji": "🥪",
+    "source": "https://business.danvilleareachamber.com/list/category/restaurants-1184",
+    "distanceMiles": 4.46
+  },
+  {
+    "name": "Forbes Mill Steakhouse",
+    "address": "200 Sycamore Valley Road West, Danville, CA",
+    "cuisine": "Steakhouse",
+    "emoji": "🍽️",
+    "source": "https://business.danvilleareachamber.com/list/category/restaurants-1184",
+    "distanceMiles": 4.0
+  },
+  {
+    "name": "Los Panchos",
+    "address": "480 San Ramon Valley Blvd, Danville, CA",
+    "cuisine": "Mexican",
+    "emoji": "🌮",
+    "source": "https://business.danvilleareachamber.com/list/category/restaurants-1184",
+    "distanceMiles": 4.44
+  },
+  {
+    "name": "Locanda Ravello",
+    "address": "172 East Prospect Ave, Danville, CA",
+    "cuisine": "Italian",
+    "emoji": "🍕",
+    "source": "https://business.danvilleareachamber.com/list/category/restaurants-1184",
+    "distanceMiles": 4.71
+  },
+  {
+    "name": "Falafel Boy",
+    "address": "327 Hartz Ave, Danville, CA",
+    "cuisine": "Mediterranean",
+    "emoji": "🧆",
+    "source": "https://business.danvilleareachamber.com/list/category/restaurants-1184",
+    "distanceMiles": 4.75
+  },
+  {
+    "name": "Tides",
+    "address": "312 Railroad Ave, Danville, CA",
+    "cuisine": "Seafood",
+    "emoji": "🐟",
+    "source": "https://business.danvilleareachamber.com/list/category/restaurants-1184",
+    "distanceMiles": 4.55
+  },
+  {
+    "name": "Aracely Lounge",
+    "address": "148 East Prospect Ave, Danville, CA",
+    "cuisine": "American brunch",
+    "emoji": "🥞",
+    "source": "https://business.danvilleareachamber.com/list/category/restaurants-1184",
+    "distanceMiles": 4.7
+  },
+  {
+    "name": "Esin Restaurant & Bar",
+    "address": "331 Hartz Ave, Danville, CA",
+    "cuisine": "Californian Mediterranean",
+    "emoji": "🍽️",
+    "source": "https://business.danvilleareachamber.com/list/category/restaurants-1184",
+    "distanceMiles": 4.74
+  },
+  {
+    "name": "Erik's DeliCafe",
+    "address": "159 Market Place, San Ramon, CA",
+    "cuisine": "Sandwiches",
+    "emoji": "🥪",
+    "source": "https://bayareatelegraph.com/2026/09/15/iconic-san-ramon-cafe-has-moved-after-decades-in-the-same-spot/",
+    "distanceMiles": 0.51
+  },
+  {
+    "name": "Banseok Korean BBQ",
+    "address": "7877 Amador Valley Blvd, Dublin, CA",
+    "cuisine": "Korean barbecue",
+    "emoji": "🍚",
+    "source": "https://eatoutmap.com/en/usa/dublin/restaurants",
+    "distanceMiles": 4.06
+  },
+  {
+    "name": "Golden Sand Harbor",
+    "address": "7745 Amador Valley Blvd, Dublin, CA",
+    "cuisine": "Chinese",
+    "emoji": "🥡",
+    "source": "https://eatoutmap.com/en/usa/dublin/restaurants",
+    "distanceMiles": 4.02
+  },
+  {
+    "name": "Fresh Millions",
+    "address": "6599 Dublin Blvd, Dublin, CA",
+    "cuisine": "Bowls and salads",
+    "emoji": "🥗",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 4.77
+  },
+  {
+    "name": "Cherie's Southern Kitchen",
+    "address": "4920 Dublin Blvd, Dublin, CA",
+    "cuisine": "Southern American",
+    "emoji": "🍽️",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 5.69
+  },
+  {
+    "name": "Gobi Mongolian Grill",
+    "address": "4811 Hopyard Rd, Pleasanton, CA",
+    "cuisine": "Mongolian",
+    "emoji": "🍲",
+    "source": "https://eatoutmap.com/en/usa/dublin/amenity/wheelchair",
+    "distanceMiles": 5.73
+  },
+  {
+    "name": "Indian Hotspot",
+    "address": "11010 Bollinger Canyon Rd, San Ramon, CA",
+    "cuisine": "Indian",
+    "emoji": "🍛",
+    "source": "https://www.indianhotspot.com/",
+    "distanceMiles": 2.13
   }
+,
+  {
+    "name": "Meyhouse",
+    "address": "6000 Bollinger Canyon Rd, San Ramon, CA 94583",
+    "cuisine": "Turkish",
+    "emoji": "🥙",
+    "source": "https://www.meyhouserestaurant.com/sanramon",
+    "distanceMiles": 0
+  },
+  {
+    "name": "Alora Social",
+    "address": "6000 Bollinger Canyon Rd Suite 1100, San Ramon, CA 94583",
+    "cuisine": "Mediterranean",
+    "emoji": "🧆",
+    "source": "https://www.visitalora.com/alora-social",
+    "distanceMiles": 0
+  },
+  {
+    "name": "Rico Rico Taco",
+    "address": "6000 Bollinger Canyon Rd Suite 1207, San Ramon, CA 94583",
+    "cuisine": "Mexican",
+    "emoji": "🌮",
+    "source": "https://toast.app/r/rico-rico-taco-san-ramon/order",
+    "distanceMiles": 0
+  }
+
 ].sort((a,b) => a.name.localeCompare(b.name));
 
 export function categoryFor(restaurant) {

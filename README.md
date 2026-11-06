@@ -9,7 +9,7 @@ Once selected, the shared pick stays until someone posts a review with a photo, 
 
 ## Restaurant pool
 
-80 local restaurants: the previous 29 vetted places plus 51 additional listings from local directories and restaurant websites. National and regional chains are excluded where identified. The new directory listings have not each been independently audited for ownership or current operating status; verify before visiting. Sources are linked in each restaurant record.
+126 restaurants: a mix of independent places and smaller local or regional chains, including some fast-casual spots. Candidates were checked against restaurant websites and local directories; opening status and ownership may change, so verify before visiting. Sources are linked in each restaurant record.
 
 The area is a seven-mile straight-line radius centered on City Center Bishop Ranch, 6000 Bollinger Canyon Road, San Ramon. All records have US Census address-geocoder distance estimates within seven miles. This is not an exhaustive directory or a live open-now feed. Check the restaurant for hours and menus.
 
